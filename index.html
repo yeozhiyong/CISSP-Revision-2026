@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CISSP Revision 2026 - Domain 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .domain-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .domain-title {
+            font-size: 1.8em;
+            color: #333;
+        }
+        
+        .domain-stats {
+            text-align: right;
+        }
+        
+        .weightage {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .priority {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .priority-high {
+            background: #fee;
+            color: #c33;
+        }
+        
+        .flashcard-section {
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: "🎴";
+        }
+        
+        .flashcard {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+        
+        .flashcard:hover {
+            transform: translateX(5px);
+        }
+        
+        .flashcard-front {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .flashcard-back {
+            color: #555;
+            padding-left: 20px;
+            border-left: 2px solid #ddd;
+        }
+        
+        .formula-box {
+            background: #f0f4ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .formula {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .checklist {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .checklist h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: #555;
+        }
+        
+        .checklist-item::before {
+            content: "☐";
+            font-size: 1.2em;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            background: white;
+            color: #667eea;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .domain-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .domain-stats {
+                text-align: center;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 CISSP Revision 2026</h1>
+            <p>Exam Date: July 2026 | All 8 Domains</p>
+        </header>
+        
+        <div class="domain-card">
+            <div class="domain-header">
+                <div>
+                    <h2 class="domain-title">Domain 1</h2>
+                    <p>Security and Risk Management</p>
+                </div>
+                <div class="domain-stats">
+                    <div class="weightage">16%</div>
+                    <span class="priority priority-high">🔴 HIGH PRIORITY</span>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">CIA Triad</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Confidentiality</div>
+                    <div class="flashcard-back">Prevent unauthorized <strong>disclosure</strong> (encryption, access controls)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Integrity</div>
+                    <div class="flashcard-back">Prevent unauthorized <strong>modification</strong> (hashing, digital signatures)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Availability</div>
+                    <div class="flashcard-back">Ensure <strong>timely, reliable access</strong> (redundancy, backups, failover)</div>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Policy Hierarchy</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Policy</div>
+                    <div class="flashcard-back"><strong>High-level</strong>, strategic, approved by senior management ("We protect data")</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Standard</div>
+                    <div class="flashcard-back"><strong>Specific, mandatory</strong> requirements ("Passwords must be 12+ chars")</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Procedure</div>
+                    <div class="flashcard-back"><strong>Step-by-step</strong> instructions ("How to reset password")</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Guideline</div>
+                    <div class="flashcard-back"><strong>Optional</strong> recommendations, best practices</div>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Risk Formulas</h3>
+                
+                <div class="formula-box">
+                    <div class="formula">Risk = Threat × Vulnerability × Impact</div>
+                </div>
+                
+                <div class="formula-box">
+                    <div class="formula">SLE = Asset Value × EF</div>
+                    <p style="margin-top: 10px; color: #666;">Single Loss Expectancy</p>
+                </div>
+                
+                <div class="formula-box">
+                    <div class="formula">ALE = SLE × ARO</div>
+                    <p style="margin-top: 10px; color: #666;">Annual Loss Expectancy</p>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Risk Response Strategies</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Avoid</div>
+                    <div class="flashcard-back">Eliminate the risk (stop the activity)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Mitigate</div>
+                    <div class="flashcard-back">Reduce likelihood/impact (controls, training)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Transfer</div>
+                    <div class="flashcard-back">Shift financial impact (<strong>insurance</strong>, outsourcing)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Accept</div>
+                    <div class="flashcard-back">Do nothing, absorb cost (when mitigation cost > risk)</div>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Key Concepts</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Due Care</div>
+                    <div class="flashcard-back">Taking <strong>reasonable steps</strong> to protect (action)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Due Diligence</div>
+                    <div class="flashcard-back"><strong>Continuous monitoring</strong> and review (ongoing)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Residual Risk</div>
+                    <div class="flashcard-back">Risk <strong>remaining after</strong> controls implemented</div>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Exam Tips</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Think like a...</div>
+                    <div class="flashcard-back"><strong>Manager</strong>, not technician</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">First priority</div>
+                    <div class="flashcard-back"><strong>Business impact</strong>, then security</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Policy question trick</div>
+                    <div class="flashcard-back">Look for keywords: "must be" = <strong>Standard</strong></div>
+                </div>
+            </div>
+            
+            <div class="checklist">
+                <h3>✅ Domain 1 Mastery Checklist</h3>
+                <div class="checklist-item">CIA Triad memorized</div>
+                <div class="checklist-item">Policy hierarchy understood</div>
+                <div class="checklist-item">Risk formulas can calculate</div>
+                <div class="checklist-item">4 risk responses distinguished</div>
+                <div class="checklist-item">Due Care vs Due Diligence clear</div>
+                <div class="checklist-item">Can identify exam traps</div>
+                <div class="checklist-item">Practice score: 80%+</div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="domain-1-security-risk-management.md" class="nav-link">📄 Markdown Version</a>
+                <a href="https://github.com/yeozhiyong/research-reports/blob/main/cissp-complete-study-guide-2026.md" class="nav-link">📚 Full Study Guide</a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>CISSP Revision 2026 | Generated by Cupid AI Tutor</p>
+            <p>Exam Date: July 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

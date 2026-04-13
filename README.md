@@ -8,11 +8,11 @@
 
 ## 📚 Domain Progress
 
-| Domain | Status | Weight | Flashcards | Link |
-|--------|--------|--------|------------|------|
-| 1. Security & Risk Management | ✅ Complete | 16% | ✅ | [HTML](https://yeozhiyong.github.io/CISSP-Revision-2026/) |
-| 2. Asset Security | ⬜ Not Started | 10% | ⬜ | - |
-| 3. Security Architecture | ⬜ Not Started | 13% | ⬜ | - |
+| Domain | Status | Weight | Flashcards | Score |
+|--------|--------|--------|------------|-------|
+| 1. Security & Risk Management | ✅ Complete | 16% | ✅ | 10/10 |
+| 2. Asset Security | ✅ **MASTERED** | 10% | ✅ | **10/10** |
+| 3. Security Architecture & Engineering | ⬜ Not Started | 13% | ⬜ | - |
 | 4. Communication & Network Security | ⬜ Not Started | 13% | ⬜ | - |
 | 5. Identity & Access Management | ⬜ Not Started | 13% | ⬜ | - |
 | 6. Security Assessment & Testing | ⬜ Not Started | 12% | ⬜ | - |
@@ -23,36 +23,24 @@
 
 ## 🎯 Quick Access
 
-**Domain 1 Flashcards:**  
-📱 [Mobile-friendly HTML](https://yeozhiyong.github.io/CISSP-Revision-2026/)  
-📝 [Markdown Version](./domain-1-security-risk-management.md)
+### Flashcards by Domain
+- **Domain 1:** [Security & Risk Management](https://yeozhiyong.github.io/CISSP-Revision-2026/) (HTML) | [Markdown](./domain-1-security-risk-management.md)
+- **Domain 2:** [Asset Security](./domain-2-asset-security.md) ✅ **NEW!**
 
-**Full Study Guide:**  
+### Full Study Guide
 📚 [Complete 12-Week Plan](https://github.com/yeozhiyong/research-reports/blob/main/cissp-complete-study-guide-2026.md)
-
----
-
-## 🎴 What's Inside Each Domain
-
-- Flashcards for quick revision
-- Key concepts and formulas
-- Exam tips and traps
-- Practice questions
-- Mastery checklist
 
 ---
 
 ## 📅 Study Schedule
 
-- **Week 1-2:** Domain 1 (Security & Risk Management) ✅
-- **Week 3-4:** Domain 2 (Asset Security)
-- **Week 5-6:** Domains 3, 4, 5
-- **Week 7:** Domain 6
-- **Week 8-9:** Domain 8 (Software Development)
+- **Week 1-2:** Domain 1 ✅ COMPLETE
+- **Week 3-4:** Domain 2 ✅ **COMPLETE (10/10)**
+- **Week 5-6:** Domain 3 (Next!)
+- **Week 7:** Domain 4
+- **Week 8-9:** Domain 8 (Challenge area)
 - **Week 10-11:** Practice Exams
 - **Week 12:** Final Review
-
-**Total:** ~150 hours over 12 weeks
 
 ---
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CISSP Revision 2026 - Domain 1</title>
+    <title>CISSP Revision 2026 - Domains 1 & 2</title>
     <style>
         * {
             margin: 0;
@@ -41,12 +41,42 @@
             opacity: 0.9;
         }
         
+        .domain-nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .domain-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .domain-btn:hover, .domain-btn.active {
+            background: white;
+            color: #667eea;
+        }
+        
         .domain-card {
             background: white;
             border-radius: 16px;
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+        }
+        
+        .domain-card.active {
+            display: block;
         }
         
         .domain-header {
@@ -73,7 +103,7 @@
             color: #667eea;
         }
         
-        .priority {
+        .status-badge {
             display: inline-block;
             padding: 5px 15px;
             border-radius: 20px;
@@ -81,9 +111,14 @@
             font-weight: bold;
         }
         
-        .priority-high {
-            background: #fee;
-            color: #c33;
+        .status-complete {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-progress {
+            background: #fff3cd;
+            color: #856404;
         }
         
         .flashcard-section {
@@ -129,21 +164,6 @@
             border-left: 2px solid #ddd;
         }
         
-        .formula-box {
-            background: #f0f4ff;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .formula {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #667eea;
-            font-family: 'Courier New', monospace;
-        }
-        
         .checklist {
             background: #f9f9f9;
             border-radius: 12px;
@@ -162,6 +182,10 @@
             gap: 10px;
             padding: 8px 0;
             color: #555;
+        }
+        
+        .checklist-item.checked::before {
+            content: "✅";
         }
         
         .checklist-item::before {
@@ -215,6 +239,11 @@
                 text-align: center;
                 margin-top: 15px;
             }
+            
+            .domain-nav {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -222,10 +251,16 @@
     <div class="container">
         <header>
             <h1>🎓 CISSP Revision 2026</h1>
-            <p>Exam Date: July 2026 | All 8 Domains</p>
+            <p>Exam Date: July 2026 | Domains 1 & 2 Complete</p>
         </header>
         
-        <div class="domain-card">
+        <div class="domain-nav">
+            <button class="domain-btn active" onclick="showDomain('domain1')">Domain 1</button>
+            <button class="domain-btn" onclick="showDomain('domain2')">Domain 2</button>
+        </div>
+        
+        <!-- Domain 1 -->
+        <div id="domain1" class="domain-card active">
             <div class="domain-header">
                 <div>
                     <h2 class="domain-title">Domain 1</h2>
@@ -233,7 +268,7 @@
                 </div>
                 <div class="domain-stats">
                     <div class="weightage">16%</div>
-                    <span class="priority priority-high">🔴 HIGH PRIORITY</span>
+                    <span class="status-badge status-complete">✅ COMPLETE</span>
                 </div>
             </div>
             
@@ -257,130 +292,141 @@
             </div>
             
             <div class="flashcard-section">
-                <h3 class="section-title">Policy Hierarchy</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Policy</div>
-                    <div class="flashcard-back"><strong>High-level</strong>, strategic, approved by senior management ("We protect data")</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Standard</div>
-                    <div class="flashcard-back"><strong>Specific, mandatory</strong> requirements ("Passwords must be 12+ chars")</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Procedure</div>
-                    <div class="flashcard-back"><strong>Step-by-step</strong> instructions ("How to reset password")</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Guideline</div>
-                    <div class="flashcard-back"><strong>Optional</strong> recommendations, best practices</div>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
                 <h3 class="section-title">Risk Formulas</h3>
                 
-                <div class="formula-box">
-                    <div class="formula">Risk = Threat × Vulnerability × Impact</div>
-                </div>
-                
-                <div class="formula-box">
-                    <div class="formula">SLE = Asset Value × EF</div>
-                    <p style="margin-top: 10px; color: #666;">Single Loss Expectancy</p>
-                </div>
-                
-                <div class="formula-box">
-                    <div class="formula">ALE = SLE × ARO</div>
-                    <p style="margin-top: 10px; color: #666;">Annual Loss Expectancy</p>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Risk Response Strategies</h3>
-                
                 <div class="flashcard">
-                    <div class="flashcard-front">Avoid</div>
-                    <div class="flashcard-back">Eliminate the risk (stop the activity)</div>
+                    <div class="flashcard-front">SLE = ?</div>
+                    <div class="flashcard-back">Asset Value × EF (Single Loss Expectancy)</div>
                 </div>
                 
                 <div class="flashcard">
-                    <div class="flashcard-front">Mitigate</div>
-                    <div class="flashcard-back">Reduce likelihood/impact (controls, training)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Transfer</div>
-                    <div class="flashcard-back">Shift financial impact (<strong>insurance</strong>, outsourcing)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Accept</div>
-                    <div class="flashcard-back">Do nothing, absorb cost (when mitigation cost > risk)</div>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Key Concepts</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Due Care</div>
-                    <div class="flashcard-back">Taking <strong>reasonable steps</strong> to protect (action)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Due Diligence</div>
-                    <div class="flashcard-back"><strong>Continuous monitoring</strong> and review (ongoing)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Residual Risk</div>
-                    <div class="flashcard-back">Risk <strong>remaining after</strong> controls implemented</div>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Exam Tips</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Think like a...</div>
-                    <div class="flashcard-back"><strong>Manager</strong>, not technician</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">First priority</div>
-                    <div class="flashcard-back"><strong>Business impact</strong>, then security</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Policy question trick</div>
-                    <div class="flashcard-back">Look for keywords: "must be" = <strong>Standard</strong></div>
+                    <div class="flashcard-front">ALE = ?</div>
+                    <div class="flashcard-back">SLE × ARO (Annual Loss Expectancy)</div>
                 </div>
             </div>
             
             <div class="checklist">
-                <h3>✅ Domain 1 Mastery Checklist</h3>
-                <div class="checklist-item">CIA Triad memorized</div>
-                <div class="checklist-item">Policy hierarchy understood</div>
-                <div class="checklist-item">Risk formulas can calculate</div>
-                <div class="checklist-item">4 risk responses distinguished</div>
-                <div class="checklist-item">Due Care vs Due Diligence clear</div>
-                <div class="checklist-item">Can identify exam traps</div>
-                <div class="checklist-item">Practice score: 80%+</div>
+                <h3>✅ Mastery Checklist</h3>
+                <div class="checklist-item checked">CIA Triad memorized</div>
+                <div class="checklist-item checked">Risk formulas mastered</div>
+                <div class="checklist-item checked">Policy hierarchy understood</div>
+                <div class="checklist-item checked">Practice score: 10/10</div>
+            </div>
+        </div>
+        
+        <!-- Domain 2 -->
+        <div id="domain2" class="domain-card">
+            <div class="domain-header">
+                <div>
+                    <h2 class="domain-title">Domain 2</h2>
+                    <p>Asset Security</p>
+                </div>
+                <div class="domain-stats">
+                    <div class="weightage">10%</div>
+                    <span class="status-badge status-complete">✅ MASTERED</span>
+                </div>
             </div>
             
-            <div class="nav-links">
-                <a href="domain-1-security-risk-management.md" class="nav-link">📄 Markdown Version</a>
-                <a href="https://github.com/yeozhiyong/research-reports/blob/main/cissp-complete-study-guide-2026.md" class="nav-link">📚 Full Study Guide</a>
+            <div class="flashcard-section">
+                <h3 class="section-title">Data Roles</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Data Owner</div>
+                    <div class="flashcard-back"><strong>Classifies</strong> data, determines <strong>value</strong>, <strong>approves</strong> access, <strong>business person</strong></div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Data Custodian</div>
+                    <div class="flashcard-back"><strong>Implements</strong> controls, manages <strong>storage</strong>, <strong>IT person</strong></div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Data User</div>
+                    <div class="flashcard-back"><strong>Follows</strong> rules, uses data <strong>appropriately</strong>, <strong>employee</strong></div>
+                </div>
             </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Data States</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Data at Rest</div>
+                    <div class="flashcard-back">In <strong>storage</strong> (disk, database, backup) → Encrypt</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Data in Transit</div>
+                    <div class="flashcard-back">On <strong>network</strong> (LAN, internet) → TLS, VPN</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Data in Use</div>
+                    <div class="flashcard-back">In <strong>memory/CPU</strong> (active processing) → Secure enclaves</div>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Secure Disposal ⚠️</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">SSD Disposal</div>
+                    <div class="flashcard-back"><strong>Physical destruction</strong> ✅ | Degaussing ❌ (doesn't work on SSDs!)</div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">HDD Disposal</div>
+                    <div class="flashcard-back"><strong>Degaussing</strong> ✅ | Physical destruction ✅</div>
+                </div>
+            </div>
+            
+            <div class="flashcard-section">
+                <h3 class="section-title">Classification Levels</h3>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">Public → Internal → Confidential → Secret</div>
+                    <div class="flashcard-back">Based on <strong>business impact</strong>, not technical difficulty</div>
+                </div>
+            </div>
+            
+            <div class="checklist">
+                <h3>✅ Mastery Checklist</h3>
+                <div class="checklist-item checked">Data Owner vs Custodian vs User</div>
+                <div class="checklist-item checked">Three states of data</div>
+                <div class="checklist-item checked">SSD disposal (physical destruction!)</div>
+                <div class="checklist-item checked">Classification levels</div>
+                <div class="checklist-item checked">Practice score: 10/10</div>
+            </div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="https://github.com/yeozhiyong/research-reports/blob/main/cissp-complete-study-guide-2026.md" class="nav-link">📚 Full Study Guide</a>
+            <a href="https://github.com/yeozhiyong/CISSP-Revision-2026" class="nav-link">📁 GitHub Repo</a>
         </div>
         
         <footer>
             <p>CISSP Revision 2026 | Generated by Cupid AI Tutor</p>
-            <p>Exam Date: July 2026</p>
+            <p>Domains 1 & 2 Complete | Ready for Domain 3</p>
         </footer>
     </div>
+    
+    <script>
+        function showDomain(domainId) {
+            // Hide all domains
+            document.querySelectorAll('.domain-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.domain-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected domain
+            document.getElementById(domainId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>

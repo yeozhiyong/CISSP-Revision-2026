@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CISSP Practice - Domain 1 - Security and Risk Management</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: #00d4ff; text-align: center; margin-bottom: 10px; }
+        .timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #16213e;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+        .timer.warning { color: #ff6b6b; border-color: #ff6b6b; }
+        .progress {
+            background: #16213e;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .question {
+            background: #16213e;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00d4ff;
+        }
+        .question-number { color: #00d4ff; font-weight: bold; margin-bottom: 10px; }
+        .question-text { font-size: 18px; margin-bottom: 20px; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option {
+            background: #0f3460;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .option:hover { background: #1a4a7a; }
+        .option.selected { border-color: #00d4ff; background: #1a4a7a; }
+        .option.correct { border-color: #4ade80; background: #1a4a3a; }
+        .option.wrong { border-color: #ff6b6b; background: #4a1a2a; }
+        .explanation {
+            display: none;
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #4ade80;
+        }
+        .explanation.show { display: block; }
+        .btn {
+            background: #00d4ff;
+            color: #1a1a2e;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+        }
+        .btn:hover { background: #33ddff; }
+        .results {
+            display: none;
+            background: #16213e;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .score { font-size: 48px; color: #00d4ff; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="timer" id="timer">--:--</div>
+    <div class="container">
+        <h1>🎓 CISSP Practice - Domain 1 - Security and Risk Management</h1>
+        <div class="progress">Question <span id="current">1</span> of 60</div>
+        
+        <form id="quiz-form">
+
+            <div class="question" data-question="1">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">Q4. A city government is drafting an information-security policy for its smart-municipality program. The mayor insists the policy must “never impede innovation.” Which approach BEST reconciles this mandate with security objectives?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Reference an ISO 27001 control set and allow waivers for any control that slows deployment.  </div>
+                    <div class="option" data-answer="B">B. Publish a high-level policy that mandates risk assessment and assigns ownership, then delegate detailed standards to individual departments.  </div>
+                    <div class="option" data-answer="C">C. Adopt the vendor’s default security settings as the official policy.  </div>
+                    <div class="option" data-answer="D">D. Issue a single city-wide technical baseline and require every IoT project to comply before procurement.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    A high-level policy sets governance expectations without dictating technology, letting departments innovate while still requiring risk ownership. A undercuts security by pre-authorizing waivers. C transfers policy control to vendors. D blocks innovation by front-loading lengthy approvals.
+                </div>
+            </div>
+
+            <div class="question" data-question="2">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">Q10. A CISO is reviewing the company’s security-awareness program after a series of successful business-email-compromise (BEC) scams. The phishing simulations show a 5% click-through rate, down from 25% two years ago, yet BEC losses have doubled in the same period. Which risk-assumption mistake BEST explains this apparent contradiction?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. The risk assessment assumed that reduced click-through rate directly translates to lower financial loss, ignoring adversary adaptation and dollar amount per incident  </div>
+                    <div class="option" data-answer="B">B. The inherent risk of BEC was incorrectly calculated using qualitative methods instead of quantitative  </div>
+                    <div class="option" data-answer="C">C. The residual risk was accepted by the business without board sign-off  </div>
+                    <div class="option" data-answer="D">D. The security-awareness program adopted NIST SP 800-50 instead of 800-16  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    The assumption that fewer clicks equal lower loss is flawed; BEC actors may target fewer but higher-value transactions. B is method-oriented and does not explain the doubling of losses. C is a governance issue, not an assumption error. D is a framework choice, not a root cause of increased losses.
+                </div>
+            </div>
+
+            <div class="question" data-question="3">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">Q2. The board of a publicly traded retailer has adopted a risk appetite statement that says, “No cybersecurity incident shall materially affect quarterly earnings.” After a PCI DSS assessment, the CIO learns that the current card-holder environment cannot be fully segmented before the holiday season, leaving a 35 % probability of a breach costing up to USD 40 M. What is the MOST appropriate risk response?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Accept the risk and document the rationale in the risk register because holiday revenue is critical  </div>
+                    <div class="option" data-answer="B">B. Avoid the risk by suspending all card-present transactions until segmentation is complete  </div>
+                    <div class="option" data-answer="C">C. Mitigate the risk by accelerating a micro-segmentation project and adding continuous monitoring  </div>
+                    <div class="option" data-answer="D">D. Transfer the risk by purchasing a cyber-insurance policy with a USD 50 M limit and no deductible  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Mitigation reduces likelihood/impact to align residual risk with the board’s “no material effect” appetite. Acceptance (A) violates the appetite. Avoidance (B) is commercially unrealistic for a retailer. Transfer (D) still leaves a breach within the quarterly window; insurance reimburses but does not prevent material earnings impact.
+                </div>
+            </div>
+
+            <div class="question" data-question="4">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">Q7. A European manufacturer acquires a U.S. firm that has self-certified under the EU-U.S. Privacy Shield. Two months later, the Court of Justice of the EU invalidates Privacy Shield. The acquiring company’s privacy officer recommends continuing data transfers under the old privacy policy until new Standard Contractual Clauses (SCCs) are signed, arguing “no immediate enforcement is expected.” Which type of risk is the officer creating?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Compliance risk—potential regulatory fines for unlawful transfers  </div>
+                    <div class="option" data-answer="B">B. Transaction risk—currency fluctuation on cross-border payments  </div>
+                    <div class="option" data-answer="C">C. Strategic risk—loss of market share to privacy-focused competitors  </div>
+                    <div class="option" data-answer="D">D. Operational risk—system outage during SCC re-negotiation  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Continued transfer without a valid mechanism violates GDPR, exposing the firm to administrative fines—pure compliance risk. The other options are financial, competitive, or technical, not regulatory.
+                </div>
+            </div>
+
+            <div class="question" data-question="5">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">Q2. A SaaS provider’s board has adopted an “acceptable residual risk” threshold of ≤ 2 % annualised loss expectancy (ALE) of EBITDA. During the annual review, the CISO calculates that a newly discovered vulnerability exposes the firm to an ALE of USD 4.2 M (4.5 % EBITDA). A patch exists but will cost USD 1.1 M to deploy across the multi-tenant estate and degrade performance, generating an estimated USD 0.8 M in lost revenue. Which choice BEST demonstrates risk-based decision making aligned with the board’s risk appetite?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Patch immediately because the vulnerability ALE exceeds the threshold.  </div>
+                    <div class="option" data-answer="B">B. Do not patch; the sum of patching cost and revenue loss (USD 1.9 M) is less than the ALE, so the business comes out ahead.  </div>
+                    <div class="option" data-answer="C">C. Accept the risk because the vulnerability is not yet public and the firm has WAF logs that might detect exploitation.  </div>
+                    <div class="option" data-answer="D">D. Re-evaluate the quantitative model with threat-intelligence that lowers the exposure factor, then re-assess against the 2 % threshold.  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    The board’s monetary threshold is policy; before deviating from it the model assumptions must be validated (D). Option A ignores cost-benefit and could violate fiduciary duty by overspending. B compares cumulative cost only to gross ALE, not to the 2 % cap. C is dangerous “security through obscurity” and ignores the already-quantified exceedance of appetite.
+                </div>
+            </div>
+
+            <div class="question" data-question="6">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">Q9. A startup’s CISO wants to adopt the NIST CSF but must map it to the ISO 27001 controls already demanded by European customers. Which risk-management technique is being performed?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Risk aggregation across multiple business units  </div>
+                    <div class="option" data-answer="B">B. Control mapping to satisfy overlapping compliance obligations  </div>
+                    <div class="option" data-answer="C">C. Risk transference through standards adoption  </div>
+                    <div class="option" data-answer="D">D. Qualitative risk ranking using maturity models  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Mapping NIST CSF categories to ISO 27001 Annex A controls is a control-mapping exercise to achieve compliance efficiency. It is not aggregation (A), transference (C), or qualitative ranking (D).
+                </div>
+            </div>
+
+            <div class="question" data-question="7">
+                <div class="question-number">Question 7</div>
+                <div class="question-text">Q6. A provincial government is drafting legislation that would require every critical-infrastructure operator to report “material cyber incidents” within six hours of discovery. The CISO of a regional power utility argues that the proposed timeline is “unrealistic and creates legal risk.” Which risk management technique is the CISO attempting to use?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Risk avoidance  </div>
+                    <div class="option" data-answer="B">B. Risk transference  </div>
+                    <div class="option" data-answer="C">C. Risk acceptance  </div>
+                    <div class="option" data-answer="D">D. Risk rejection  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    By lobbying to change the regulation, the CISO is attempting to reject (D) the risk (i.e., eliminate the requirement) rather than avoid, transfer, or accept it. Avoidance (A) would mean exiting the critical-infrastructure sector. Transference (B) would involve insurance. Acceptance (C) would be quietly complying.
+                </div>
+            </div>
+
+            <div class="question" data-question="8">
+                <div class="question-number">Question 8</div>
+                <div class="question-text">Q10. A conglomerate with four autonomous divisions wants to create an enterprise-wide risk appetite statement. The CISO’s first draft is rejected by the board because it lists only technical IT risks. Which addition would BEST satisfy governance expectations?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Include a risk tolerance table for reputation, regulatory, financial, and strategic risk categories.  </div>
+                    <div class="option" data-answer="B">B. Attach the NIST 800-53 control catalog as an appendix.  </div>
+                    <div class="option" data-answer="C">C. Quantify every risk in monetary terms using FAIR.  </div>
+                    <div class="option" data-answer="D">D. Require divisions to adopt the same risk-scoring matrix (1–5).  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    A board-level appetite statement must cover all material risk categories, not just IT. Tolerance tables translate risk into business terms. B is too tactical; C is useful but not the only dimension; D standardizes scoring but does not articulate appetite.
+                </div>
+            </div>
+
+            <div class="question" data-question="9">
+                <div class="question-number">Question 9</div>
+                <div class="question-text">Q3. A cloud service provider (CSP) offers a low-cost object-storage service that encrypts customer data at rest but retains full control of the keys. A healthcare client subject to HIPAA wants to use the service for two years of archived medical images. Which residual risk remains even after the CSP signs a Business Associate Agreement (BAA)?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Unauthorized disclosure if the CSP is subpoenaed without the client’s knowledge  </div>
+                    <div class="option" data-answer="B">B. Data loss due to bit rot or silent corruption on spinning disks  </div>
+                    <div class="option" data-answer="C">C. Account hijacking because the client does not enforce MFA on its portal account  </div>
+                    <div class="option" data-answer="D">D. Jurisdictional risk if the data center is moved from the U.S. to the EU  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    With CSP-held keys, the provider can decrypt and produce data in response to a lawful request; the BAA does not negate this residual risk. Bit rot (B) is normally addressed by CSP integrity controls and SLAs. Account hijacking (C) is a client-side control issue, not a residual risk of the CSP architecture. Jurisdictional risk (D) is typically disclosed and contractually stabilized.
+                </div>
+            </div>
+
+            <div class="question" data-question="10">
+                <div class="question-number">Question 10</div>
+                <div class="question-text">Q10. A conglomerate operates in 40 countries. The board wants a single framework to harmonize risk appetite statements across subsidiaries with different regulatory environments. Which of the following standards provides the BEST overarching structure for integrating risk, compliance, and assurance?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. NIST SP 800-53 rev 5  </div>
+                    <div class="option" data-answer="B">B. ISO 31000  </div>
+                    <div class="option" data-answer="C">C. ISO 27001  </div>
+                    <div class="option" data-answer="D">D. COBIT 2019  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    ISO 31000 is the international standard for enterprise risk management and is framework-agnostic, allowing alignment of risk appetite across diverse jurisdictions and industries. NIST 800-53 (A) and ISO 27001 (C) are control sets for information security, too narrow. COBIT (D) focuses on IT governance, not total enterprise risk.
+                </div>
+            </div>
+
+            <div class="question" data-question="11">
+                <div class="question-number">Question 11</div>
+                <div class="question-text">Q9. A startup’s CISO is drafting an asset-classification policy. Development servers in the lab are currently labeled “Internal Use Only.” The servers contain experimental AI models that, if leaked, would give competitors a market advantage but do not contain personal data. Which classification label should the CISO assign?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Public  </div>
+                    <div class="option" data-answer="B">B. Internal Use Only  </div>
+                    <div class="option" data-answer="C">C. Confidential  </div>
+                    <div class="option" data-answer="D">D. Restricted  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    “Confidential” is appropriate for proprietary data whose unauthorized disclosure would harm the business. “Internal Use Only” understates the competitive impact. “Restricted” (D) is usually reserved for highly regulated or secret data (e.g., state secrets, PCI card data). Public (A) is clearly wrong.
+                </div>
+            </div>
+
+            <div class="question" data-question="12">
+                <div class="question-number">Question 12</div>
+                <div class="question-text">Q8. A zero-day exploits a widely used image-processing library. The vendor will not have a patch for 14 days. The CISO convenes a war-room and must choose the BEST risk-response strategy for the company’s public-facing e-commerce site.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Accept the risk because a patch is imminent.  </div>
+                    <div class="option" data-answer="B">B. Mitigate by temporarily disabling image upload and using a WAF rule that blocks malformed magic bytes.  </div>
+                    <div class="option" data-answer="C">C. Transfer by buying a cyber-insurance rider that covers zero-day losses.  </div>
+                    <div class="option" data-answer="D">D. Avoid by shutting down the entire site until the patch is released.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Mitigation with a virtual patch (WAF rule) plus disabling the vulnerable function reduces likelihood quickly without halting revenue. Accept (A) ignores active exploitation. Transfer (C) does not prevent service disruption. Avoid (D) is disproportionate.
+                </div>
+            </div>
+
+            <div class="question" data-question="13">
+                <div class="question-number">Question 13</div>
+                <div class="question-text">Q2. A national retailer’s board has just approved a five-year strategic plan that expands e-commerce revenue from 20 % to 60 % of total sales. The CISO must now update the enterprise risk register. Which risk is MOST likely to increase as a direct result of this strategic shift?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Physical theft of point-of-sale terminals in stores  </div>
+                    <div class="option" data-answer="B">B. Credit-card skimming at gas-station pumps owned by partners  </div>
+                    <div class="option" data-answer="C">C. Distributed denial-of-service (DDoS) attacks against the public website  </div>
+                    <div class="option" data-answer="D">D. Insider theft of paper-based customer receipts  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    A 3× increase in e-commerce revenue makes the public website a higher-value target for DDoS extortion or competitor sabotage (C). Physical POS theft (A) and paper receipts (D) decline as store traffic drops. Skimming at partner pumps (B) is unrelated to the retailer’s online strategy.
+                </div>
+            </div>
+
+            <div class="question" data-question="14">
+                <div class="question-number">Question 14</div>
+                <div class="question-text">Q5. A FinTech start-up has three co-founders who each own 30 % of the company and insist on keeping local root access to production servers “for agility.” The venture-capital term sheet requires SOX compliance within 12 months. Which control will BEST reduce the risk of financial-reporting misstatement while still allowing rapid feature releases?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Implement a segregation-of-duties policy that separates code deployment from production approval  </div>
+                    <div class="option" data-answer="B">B. Require each founder to sign an annual integrity statement  </div>
+                    <div class="option" data-answer="C">C. Mandate phishing-awareness training for all employees  </div>
+                    <div class="option" data-answer="D">D. Install a next-generation firewall at the colocation facility  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    SOX focuses on financial-statement accuracy; segregation of duties (A) prevents any single founder from deploying unaudited code that could manipulate transaction logs. Integrity statements (B) and phishing training (C) are useful but do not enforce technical enforcement. A firewall (D) protects network perimeter, not financial logic.
+                </div>
+            </div>
+
+            <div class="question" data-question="15">
+                <div class="question-number">Question 15</div>
+                <div class="question-text">Q9. A privacy impact assessment (PIA) for a new mobile banking app shows that collecting precise geolocation for fraud detection creates high privacy risk to data subjects. The DPO recommends “privacy by design.” Which control BEST implements this principle?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Add a click-through consent banner that geolocation is collected.  </div>
+                    <div class="option" data-answer="B">B. Collect city-level location instead of GPS coordinates and re-evaluate fraud-detection accuracy.  </div>
+                    <div class="option" data-answer="C">C. Encrypt the GPS coordinates in transit and at rest.  </div>
+                    <div class="option" data-answer="D">D. Provide an opt-out toggle in the settings menu.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Minimizing data precision (city vs. GPS) is core to privacy by design; it lowers risk while retaining utility. Consent (A) and opt-out (D) are lawful but do not reduce the data’s sensitivity. Encryption (C) protects confidentiality, not privacy from over-collection.
+                </div>
+            </div>
+
+            <div class="question" data-question="16">
+                <div class="question-number">Question 16</div>
+                <div class="question-text">Q1. A multinational bank is preparing to enter a new, emerging market country where the anti-money-laundering (AML) regulations are still being drafted. The CISO has been asked to brief the board on how this regulatory uncertainty affects the organization’s overall risk posture. Which of the following best describes the primary risk the CISO should highlight?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Strategic risk arising from potential changes in statutory compliance obligations  </div>
+                    <div class="option" data-answer="B">B. Transaction risk that may increase the volume of fraudulent wire transfers  </div>
+                    <div class="option" data-answer="C">C. Reputation risk caused by negative social-media sentiment in the home country  </div>
+                    <div class="option" data-answer="D">D. Credit risk due to higher default rates among new retail customers  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Entering a jurisdiction with evolving AML laws creates strategic risk—uncertainty at the board level about future compliance obligations that could fundamentally alter business models or require costly retro-fits. Transaction risk (B) is operational, not regulatory; reputation risk (C) is secondary and speculative; credit risk (D) is financial, not legal/regulatory.
+                </div>
+            </div>
+
+            <div class="question" data-question="17">
+                <div class="question-number">Question 17</div>
+                <div class="question-text">Q2. A hospital’s executive committee has approved a new electronic health-record (EHR) system that will exchange data with affiliated clinics through public internet links. The CIO argues that because the system is HIPAA-compliant out-of-the-box, no further risk assessment is necessary. The CISO disagrees. Which risk-management principle best supports the CISO’s position?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Risk ownership cannot be transferred to a vendor; residual risk must always be reassessed in the deploying organization’s context.  </div>
+                    <div class="option" data-answer="B">B. Qualitative risk assessment is required for all public-network data flows regardless of vendor claims.  </div>
+                    <div class="option" data-answer="C">C. Annual penetration testing is mandated by HIPAA for any internet-facing system.  </div>
+                    <div class="option" data-answer="D">D. The approval of the executive committee automatically lowers the risk rating to “acceptable.”  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Domain 1 teaches that even when a vendor provides a compliant product, the organization still owns the residual risk once the system is integrated into its unique environment. B is partially true but too narrow; qualitative assessment is a method, not a principle. C is a possible control, not a principle. D contradicts the concept that risk acceptance must be evidence-based, not automatic.
+                </div>
+            </div>
+
+            <div class="question" data-question="18">
+                <div class="question-number">Question 18</div>
+                <div class="question-text">Q4. During an ISO 27001 certification engagement, the lead auditor discovers that the organization’s information-security policy still references the retired CEO by name and last year’s revenue figures. The CISO argues that policy accuracy is “editorial” and does not affect security controls. Which risk-management principle has the CISO misunderstood?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Risk ownership must be assigned at the executive level  </div>
+                    <div class="option" data-answer="B">B. Policies must be reviewed and approved at least annually  </div>
+                    <div class="option" data-answer="C">C. Due-care obligation requires current and accurate documentation  </div>
+                    <div class="option" data-answer="D">D. Risk appetite must be expressed in monetary terms  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Stale policies demonstrate lack of due care and can undermine both internal governance and external evidentiary requirements (e.g., in litigation). Annual review (B) is true but narrower; due care (C) is the overarching principle. Risk ownership (A) and monetary appetite (D) are unrelated to the accuracy issue.
+                </div>
+            </div>
+
+            <div class="question" data-question="19">
+                <div class="question-number">Question 19</div>
+                <div class="question-text">Q9. A CISO has adopted the NIST CSF and mapped all 108 sub-category controls to internal processes. The board now asks, “How do we know our cyber-risk is ‘within appetite’?” Which deliverable will BEST answer the board’s question?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. A heat-map that plots residual risk against the board-approved risk-appetite statement  </div>
+                    <div class="option" data-answer="B">B. The latest penetration-test report showing zero critical findings  </div>
+                    <div class="option" data-answer="C">C. A balanced budget for the security department  </div>
+                    <div class="option" data-answer="D">D. A comparison of the company’s security spending to industry peers  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    A heat-map (A) directly compares residual risk levels to the quantitative or qualitative thresholds in the approved appetite statement. A clean pen-test (B) is point-in-time. Budget compliance (C) and peer benchmarking (D) do not measure risk against appetite.
+                </div>
+            </div>
+
+            <div class="question" data-question="20">
+                <div class="question-number">Question 20</div>
+                <div class="question-text">Q4. A hospital chain wants to outsource medical-transcription services to a vendor that uses offshore staff in a country with no HIPAA-equivalent law. The contract will include HIPAA Business Associate Agreement (BAA) language, but the vendor refuses to allow on-site audits citing COVID restrictions. Which control combination BEST satisfies the “security rule” requirement for reasonable assurance?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Right-to-audit clause, annual SOC 2 Type II report from an independent CPA, and contractual requirement for encryption of PHI in transit and at rest.  </div>
+                    <div class="option" data-answer="B">B. Force-majeure waiver that shifts all liability to the vendor if PHI is breached.  </div>
+                    <div class="option" data-answer="C">C. Purchase of a cyber-liability policy with a USD 10 M limit naming the hospital as beneficiary.  </div>
+                    <div class="option" data-answer="D">D. Require the vendor to obtain a PCI-DSS ROC because it covers card data and therefore implies strong security.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    SOC 2 + right-to-audit + encryption (A) gives verifiable, ongoing assurance when physical audits are impractical. Force-majeure waiver (B) is unenforceable and does not demonstrate due diligence. Insurance (C) is only financial recovery, not assurance. PCI-DSS (D) is irrelevant to PHI.
+                </div>
+            </div>
+
+            <div class="question" data-question="21">
+                <div class="question-number">Question 21</div>
+                <div class="question-text">Q1. A multinational retailer wants to move customer loyalty data from on-premise servers in the EU to a new cloud region located in Singapore. The CISO is asked whether the transfer can proceed immediately. Which of the following is the MOST important security consideration that could delay the migration?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. The cloud provider’s data-center is Tier III, not Tier IV.  </div>
+                    <div class="option" data-answer="B">B. Singapore’s PDPA may impose data-localization requirements.  </div>
+                    <div class="option" data-answer="C">C. Cross-border transfer rules under GDPR require an adequacy decision or other safeguard.  </div>
+                    <div class="option" data-answer="D">D. The retailer’s incident-response team is staffed only during EU business hours.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    GDPR (and most modern privacy regimes) restricts transfers of personal data outside the EEA unless the destination country has an “adequacy” finding, or the exporter puts in place approved safeguards such as SCCs or BCRs. Failure to meet these conditions exposes the firm to regulatory fines and injunctions, so this is the show-stopper. A is irrelevant—Tier III still offers 99.98 % availability. B is incorrect because Singapore’s PDPA does not require loyalty data to stay in Singapore. D is an operational issue, not a legal barrier to transfer.
+                </div>
+            </div>
+
+            <div class="question" data-question="22">
+                <div class="question-number">Question 22</div>
+                <div class="question-text">Q7. A cloud vendor offers a “shared responsibility matrix” that states: “Customer is responsible for encrypting data in transit; provider is responsible for encrypting data at rest.” The customer CISO discovers that the provider’s “at-rest encryption” uses transparent disk encryption with keys held in the same tenant account. Government subpoenas could therefore compel the provider to hand over unencrypted data. Which risk remains despite the provider’s claim of “encryption at rest”?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Jurisdictional insider threat  </div>
+                    <div class="option" data-answer="B">B. Residual data remanence  </div>
+                    <div class="option" data-answer="C">C. Vendor lock-in  </div>
+                    <div class="option" data-answer="D">D. Key-custodian conflict of interest  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    The provider is both data processor and key custodian, creating a conflict (D) that negates the protective value of encryption against lawful access requests. Insider threat (A) is broader and less specific. Remanence (B) is irrelevant to live data. Lock-in (C) is an economic, not confidentiality, risk.
+                </div>
+            </div>
+
+            <div class="question" data-question="23">
+                <div class="question-number">Question 23</div>
+                <div class="question-text">Q9. A global manufacturer’s risk register shows a “critical” risk that a single source supplier of custom ASIC chips could implant hardware Trojans. The board decides to invest USD 5 M in an on-chip integrity-verification technology rather than dual-source. Which risk treatment strategy is being employed?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Risk avoidance  </div>
+                    <div class="option" data-answer="B">B. Risk mitigation  </div>
+                    <div class="option" data-answer="C">C. Risk transfer  </div>
+                    <div class="option" data-answer="D">D. Risk acceptance  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Integrity-verification technology lowers the likelihood/impact of Trojan insertion, classic mitigation (B). Avoidance (A) would mean dropping the supplier. Transfer (C) would be insurance or contractual indemnity. Acceptance (D) would be doing nothing.
+                </div>
+            </div>
+
+            <div class="question" data-question="24">
+                <div class="question-number">Question 24</div>
+                <div class="question-text">Q5. A fintech start-up’s board has adopted the NIST CSF as its “single source of truth.” During a Series-B due-diligence review, investors discover that the company has implemented 85 % of CSF sub-category controls but has not produced a single policy document longer than two pages. Which principle is MOST violated?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Alignment to the CSF Inform function  </div>
+                    <div class="option" data-answer="B">B. Governance through “tone at the top”  </div>
+                    <div class="option" data-answer="C">C. Due care versus due diligence  </div>
+                    <div class="option" data-answer="D">D. Transparency to shareholders  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    The Inform function requires that policies, processes, and procedures be documented and communicated; absence of documentation violates this regardless of control implementation. Tone at the top (B) is present but undocumented. Due care (C) is broader and less specific. Transparency (D) is secondary to operational evidence.
+                </div>
+            </div>
+
+            <div class="question" data-question="25">
+                <div class="question-number">Question 25</div>
+                <div class="question-text">Q8. A company runs a bug-bounty program. A researcher reports a vulnerability that exposes PII of 10,000 customers. The researcher refuses to provide technical details until the company commits to a CVE and a USD 50k reward. Which CISSP ethical principle should guide the CISO’s response?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Protect society, the profession, and the infrastructure.  </div>
+                    <div class="option" data-answer="B">B. Act honorably, honestly, justly, and legally.  </div>
+                    <div class="option" data-answer="C">C. Provide diligent and competent service.  </div>
+                    <div class="option" data-answer="D">D. Advance and protect the profession.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    (ISC)² Code ethics Canon II requires honesty and legality; paying for silence or extortion could violate anti-bribery laws. The CISO should negotiate in good faith, obtain details under responsible disclosure, then decide on reward and CVE based on policy. Canon I (A) is broader; C and D are less relevant to the immediate ethical dilemma.
+                </div>
+            </div>
+
+            <div class="question" data-question="26">
+                <div class="question-number">Question 26</div>
+                <div class="question-text">Q10. A Fortune 500 company’s risk committee has set a risk-appetite statement that “single-source supplier risk shall not exceed 5 % of annual revenue.” Procurement has just signed a five-year, USD 2 billion cloud contract with one hyperscaler, representing 8 % of projected annual revenue. What should the CISO recommend FIRST?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Immediately terminate the contract to avoid regulatory scrutiny  </div>
+                    <div class="option" data-answer="B">B. Document the exception in the risk register, require board-level approval, and mandate a contingency plan (e.g., data portability testing, exit clauses)  </div>
+                    <div class="option" data-answer="C">C. Purchase cyber-insurance for USD 2 billion  </div>
+                    <div class="option" data-answer="D">D. Shift 3 % of revenue to a second cloud provider within 30 days  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    The appetite is breached; the governance process (B) ensures explicit board acceptance and mitigating controls. Immediate termination (A) is commercially unrealistic. Insurance (C) does not reduce supplier concentration risk. A forced 30-day shift (D) is operationally infeasible and may create more risk.
+                </div>
+            </div>
+
+            <div class="question" data-question="27">
+                <div class="question-number">Question 27</div>
+                <div class="question-text">Q8. A quantitative risk analysis shows that the Annualized Loss Expectancy (ALE) of a web-application breach is USD 4 M. A proposed security upgrade reduces the probability from 40 % to 5 % but costs USD 1.2 M annually. The board’s capital-investment hurdle rate is 3 years. What should the CISO recommend?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Reject the upgrade because the exposure factor is still unknown  </div>
+                    <div class="option" data-answer="B">B. Accept the upgrade because the 3-year ROI is positive  </div>
+                    <div class="option" data-answer="C">C. Transfer the risk via insurance instead because premiums are only USD 800 k  </div>
+                    <div class="option" data-answer="D">D. Defer the decision until a qualitative analysis is completed  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Original ALE = USD 4 M; new ALE = 0.05/0.40 × 4 M = USD 0.5 M; annual savings = 3.5 M. Upgrade cost 1.2 M yields net annual benefit 2.3 M, paying back in ~0.5 years, well under the 3-year hurdle. Exposure factor (A) is already baked into the ALE. Insurance (C) costs less but does not reduce probability/impact. Deferring (D) ignores the positive ROI.
+                </div>
+            </div>
+
+            <div class="question" data-question="28">
+                <div class="question-number">Question 28</div>
+                <div class="question-text">Q7. A cloud SaaS vendor offers to sign ISO 27001 certification instead of answering a 300-line security questionnaire. The CISO needs to decide whether the certificate provides “adequate assurance.” Which of the following is the MOST reliable next step?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Accept the certificate because ISO 27001 covers all security controls.  </div>
+                    <div class="option" data-answer="B">B. Request the vendor’s most recent Statement of Applicability (SoA) and external audit report.  </div>
+                    <div class="option" data-answer="C">C. Require the vendor to obtain SOC 2 Type II instead.  </div>
+                    <div class="option" data-answer="D">D. Insist the vendor still complete the questionnaire.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    The SoA and independent audit report detail which Annex-A controls are in scope, any non-conformities, and compensating controls, giving the CISO evidence to map to the firm’s risk appetite. ISO 27001 does not prescribe specific controls, so A is false. C is redundant—both ISO and SOC can provide assurance. D ignores efficient reuse of audit artifacts.
+                </div>
+            </div>
+
+            <div class="question" data-question="29">
+                <div class="question-number">Question 29</div>
+                <div class="question-text">Q8. A multinational mining firm operates in a country that suddenly criminalizes the use of strong encryption without government-issued licenses. The firm’s VPNs and full-disk encryption are now non-compliant locally, but turning them off would violate the parent company’s global policy and EU data-protection clauses. Which of the following is the BEST risk response?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Disable encryption for local laptops and accept the residual risk  </div>
+                    <div class="option" data-answer="B">B. Continue using encryption and secretly pay “fines” to local officials  </div>
+                    <div class="option" data-answer="C">C. Engage legal counsel to file for a license or seek a regulatory exemption while implementing compensating controls (e.g., strict physical security, tokenization)  </div>
+                    <div class="option" data-answer="D">D. Immediately exit the country and abandon the mine  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Engaging counsel and seeking legitimate relief (C) balances legal compliance with security. Disabling encryption (A) creates unacceptable risk. Bribery (B) is illegal under the parent’s anti-corruption policy. Immediate exit (D) is disproportionate without exploring legal avenues.
+                </div>
+            </div>
+
+            <div class="question" data-question="30">
+                <div class="question-number">Question 30</div>
+                <div class="question-text">Q4. A nation-state attack group is rumored to be targeting the power-grid sector with zero-day malware. A regional utility’s risk register already lists “nation-state cyber attack” as a very high impact but very low likelihood event. The board is concerned that the likelihood estimate is outdated. Which of the following sources would BEST support an updated, defensible likelihood estimate?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. The company’s historical incident database over the past five years  </div>
+                    <div class="option" data-answer="B">B. Industry-wide threat-intelligence sharing portals specific to energy-sector ICS attacks  </div>
+                    <div class="option" data-answer="C">C. The annual loss expectancy (ALE) calculated from last year’s penetration-test findings  </div>
+                    <div class="option" data-answer="D">D. The vendor-selected CVSS scores of patches deployed in the last quarter  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Likelihood for low-frequency, high-impact events is best informed by sector-specific threat intelligence. Historical internal data (A) will be sparse for events that have not yet occurred. C relates to known vulnerabilities, not adversary intent. D measures severity of existing vulnerabilities, not probability of a nation-state attack.
+                </div>
+            </div>
+
+            <div class="question" data-question="31">
+                <div class="question-number">Question 31</div>
+                <div class="question-text">Q3. A multinational bank wants to replace its paper-based vendor NDA process with an e-signature platform. The CISO must ensure the solution provides non-repudiation that will hold up in New York, London, and Singapore courts. Which requirement is MOST critical?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. AES-256 encryption of the PDF at rest.  </div>
+                    <div class="option" data-answer="B">B. Digital signatures created with a FIPS 140-3-validated HSM and a publicly trusted CA.  </div>
+                    <div class="option" data-answer="C">C. GDPR data-processing addendum with the vendor.  </div>
+                    <div class="option" data-answer="D">D. ISO 27001 certification of the SaaS provider.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Courts accept digital signatures only if the signer’s private key is under sole control and backed by a trustworthy CA; an HSM provides this. Encryption (A) protects confidentiality, not non-repudiation. GDPR (C) and ISO 27001 (D) are good governance but do not directly prove who signed.
+                </div>
+            </div>
+
+            <div class="question" data-question="32">
+                <div class="question-number">Question 32</div>
+                <div class="question-text">Q5. A software company’s board wants to measure the effectiveness of the security-awareness program. The company runs monthly phishing simulations; over six months the click-through rate dropped from 18 % to 5 %, yet two employees who never clicked still leaked credentials via a fake LinkedIn survey. Which metric should the CISO recommend to the board?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Replace click-through rate with mean time to report phishing (MTTR-P).  </div>
+                    <div class="option" data-answer="B">B. Add a lagging indicator: number of incidents traced to human error.  </div>
+                    <div class="option" data-answer="C">C. Switch to measuring training completion percentage only.  </div>
+                    <div class="option" data-answer="D">D. Stop simulations and invest in technical filters only.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    A lagging indicator (incidents caused by human error) captures credential leaks that bypass click-through tests, giving the board a risk-based outcome metric. A is useful but still leading; C ignores behavior change; D abandons human controls entirely.
+                </div>
+            </div>
+
+            <div class="question" data-question="33">
+                <div class="question-number">Question 33</div>
+                <div class="question-text">Q1. A multinational bank is preparing to enter a new Asian market where the regulator requires all customer data to be “kept in-country” and accessible to domestic intelligence services on demand. The CISO’s risk assessment shows that the local data-centre operator has never obtained an ISO 27001 certification and the country’s corruption index is rated “high.” Executive management still wants to proceed for strategic-reasons. Which risk-handling option is MOST consistent with fiduciary duty to shareholders?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Accept the risk and document the rationale in the risk register once the contract is signed.  </div>
+                    <div class="option" data-answer="B">B. Avoid the risk by abandoning the market entry and surrendering first-mover advantage.  </div>
+                    <div class="option" data-answer="C">C. Transfer the risk by buying an insurance policy that covers regulatory fines and civil damages.  </div>
+                    <div class="option" data-answer="D">D. Mitigate the risk by negotiating contractual security controls, right-to-audit clauses, and a comprehensive cyber-insurance policy that names the bank as loss-payee.  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    Mitigation (D) reduces likelihood and impact to a level commensurate with the strategic reward while preserving market entry; residual risk can then be accepted by the board. Accept (A) without first lowering the risk would breach fiduciary duty given the high inherent risk. Avoid (B) is unnecessarily conservative and ignores business strategy. Transfer alone (C) does not satisfy the regulatory requirement that the bank remain ultimately responsible for data protection; insurance is only a financial back-stop, not a control.
+                </div>
+            </div>
+
+            <div class="question" data-question="34">
+                <div class="question-number">Question 34</div>
+                <div class="question-text">Q3. A zero-day ransomware attack encrypts 80 % of file shares at a manufacturing firm. The BC plan calls for a 4-hour RTO and 1-hour RPO for critical ERP data, yet after 12 hours the ERP is still unavailable. Post-event review shows the most recent off-site ERP backup was 6 hours old. Which portion of the BC/DR program failed?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Risk assessment  </div>
+                    <div class="option" data-answer="B">B. RPO definition  </div>
+                    <div class="option" data-answer="C">C. Backup process (actual vs. required RPO)  </div>
+                    <div class="option" data-answer="D">D. Incident classification  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    The stated RPO (1 hour) was not achieved because the last usable backup was 6 hours old, indicating the backup frequency or replication mechanism did not support the documented RPO. The RPO definition itself (B) was correct; the failure was in execution. A and D are not the primary cause of data loss.
+                </div>
+            </div>
+
+            <div class="question" data-question="35">
+                <div class="question-number">Question 35</div>
+                <div class="question-text">Q1. A global retailer is preparing to open its first stores in a country that has just passed a data-localization statute requiring all personal data collected from residents to remain on servers physically located in that country. The company’s current cloud-based point-of-sale (POS) system is hosted in a U.S. region and replicates nightly to a second U.S. region. The CISO has been asked to present a risk-based recommendation to the board within 30 days. Which of the following should be the CISO’s PRIMARY focus when briefing the board?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Quantifying the financial impact of losing local market access if the firm is found non-compliant  </div>
+                    <div class="option" data-answer="B">B. Evaluating the technical feasibility of encrypting all resident data before it leaves the country  </div>
+                    <div class="option" data-answer="C">C. Drafting an exception request to the local data-protection authority asking for a one-year grace period  </div>
+                    <div class="option" data-answer="D">D. Calculating the cost difference between building an in-country data center versus contracting with a local cloud provider that can guarantee data residency  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    The first domain stresses that risk management starts with understanding business consequence. Choice A directly addresses the potential business impact (loss of market access) and provides the board with the monetary context needed to make an informed risk decision. B is a control detail, not a board-level risk statement. C is a tactical workaround that may not be granted. D is an implementation option that should be analyzed only after the business impact is understood.
+                </div>
+            </div>
+
+            <div class="question" data-question="36">
+                <div class="question-number">Question 36</div>
+                <div class="question-text">Q10. A city government is drafting an incident-response plan. The mayor insists that “no ransomware payments will ever be made.” The CISO argues that this blanket statement could endanger lives if 911 systems are encrypted. Which governance document should be updated first to resolve the conflict?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. The risk-appetite statement endorsed by the city council  </div>
+                    <div class="option" data-answer="B">B. The disaster-recovery plan’s RTO table for emergency services  </div>
+                    <div class="option" data-answer="C">C. The business-impact analysis (BIA) for the 911 dispatch system  </div>
+                    <div class="option" data-answer="D">D. The cyber-insurance policy exclusion list  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    The mayor’s directive is a risk-appetite position; lives-at-risk is a stakeholder impact. The appropriate venue to reconcile the two is the formal risk-appetite statement, which the council can amend to allow exceptions under life-safety criteria. BIA (C) informs but does not set appetite; DR RTO (B) and insurance (D) are downstream artifacts.
+                </div>
+            </div>
+
+            <div class="question" data-question="37">
+                <div class="question-number">Question 37</div>
+                <div class="question-text">Q7. A payment-processor’s board has declared that any single security incident costing more than USD 5 million will be considered a “material breach” of risk appetite. The CISO needs to translate this into operational terms for the IT team. Which of the following metrics BEST operationalizes the board’s statement?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Maximum single loss expectancy (SLE) for any threat–asset pair in the risk register  </div>
+                    <div class="option" data-answer="B">B. Annualized rate of occurrence (ARO) for denial-of-service attacks  </div>
+                    <div class="option" data-answer="C">C. Number of critical vulnerabilities older than 30 days  </div>
+                    <div class="option" data-answer="D">D. Mean time to patch (MTTP) across all systems  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    SLE directly measures the financial impact of one occurrence, aligning with the board’s monetary threshold. B, C, and D are frequency or process metrics that do not, by themselves, indicate dollar loss.
+                </div>
+            </div>
+
+            <div class="question" data-question="38">
+                <div class="question-number">Question 38</div>
+                <div class="question-text">Q9. A financial-services firm must comply with both PCI DSS and a new domestic regulation that mandates encryption of all credit-card data with “government-approved ciphers.” The government list excludes some algorithms that PCI DSS allows. The firm has already invested heavily in hardware security modules (HSMs) that support the PCI-approved ciphers only. Which risk-management strategy is MOST appropriate?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Accept the risk and continue using existing HSMs because PCI DSS is the globally recognized standard  </div>
+                    <div class="option" data-answer="B">B. Avoid the risk by ceasing to process credit-card transactions until the HSMs are upgraded  </div>
+                    <div class="option" data-answer="C">C. Mitigate the risk by deploying additional HSMs that support government-approved ciphers and re-encrypt the data  </div>
+                    <div class="option" data-answer="D">D. Transfer the risk by asking the card brands to assume liability for any regulatory fines  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Mitigation through additional controls (new HSMs) allows continued business while achieving compliance with the stricter requirement. A invites regulatory fines. B is business-prohibitive. D is not feasible—card brands will not accept liability for local law violations.
+                </div>
+            </div>
+
+            <div class="question" data-question="39">
+                <div class="question-number">Question 39</div>
+                <div class="question-text">Q4. A city government is building a smart-city IoT sensor network. The project sponsor argues that “because no personal data are collected, privacy impact is negligible.” The CISO disagrees. Which argument BEST supports the CISO’s position?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Sensor metadata can be combined with open data sets to re-identify individuals.  </div>
+                    <div class="option" data-answer="B">B. Availability risks from DDoS are privacy risks under GDPR.  </div>
+                    <div class="option" data-answer="C">C. The sensors use Bluetooth 4.0, which has known encryption flaws.  </div>
+                    <div class="option" data-answer="D">D. The vendor’s privacy notice is written in English only, violating local language laws.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Even anonymized telemetry (location, MAC addresses, noise levels) can be triangulated with public data to profile citizens, creating a privacy risk that triggers data-protection obligations. B incorrectly labels availability as a privacy risk. C is a confidentiality issue for sensor firmware, not personal data. D is a notice issue, not the primary privacy concern.
+                </div>
+            </div>
+
+            <div class="question" data-question="40">
+                <div class="question-number">Question 40</div>
+                <div class="question-text">Q6. A cloud service provider (CSP) offers a shared-tenancy PaaS for health records. The provider’s certification statement says: “Our controls meet HIPAA requirements; customer still responsible for PHI.” A covered entity customer suffers a breach because an S3 bucket was mis-configured to “public.” Who is legally liable under U.S. HIPAA, and what concept determines this?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. CSP is liable because it processed PHI; concept of safe harbor.  </div>
+                    <div class="option" data-answer="B">B. Customer is liable; concept of shared responsibility.  </div>
+                    <div class="option" data-answer="C">C. CSP is liable; concept of downstream liability.  </div>
+                    <div class="option" data-answer="D">D. Neither party is liable; public cloud is exempt.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    HIPAA’s business-associate agreement and OCR guidance place configuration of access controls on the customer under the shared-responsibility model. Safe harbor (A) applies to encryption, not mis-configuration. CSP is not automatically liable (C), and clouds are not exempt (D).
+                </div>
+            </div>
+
+            <div class="question" data-question="41">
+                <div class="question-number">Question 41</div>
+                <div class="question-text">Q8. A U.S. state enacts a law requiring any company that “does business” in the state and suffers a breach affecting > 500 residents to pay USD 500 per affected record into a consumer-privacy fund. A regional retailer estimates it holds 200 k resident records and its breach probability is 0.3 per year. The CISO proposes tokenising the data set at a one-time cost of USD 1.2 M, reducing breach probability to 0.05. Which ROI calculation BEST justifies the control investment to the board?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. (200 000 × 500 × 0.3) – 1 200 000 = 29.8 M benefit; ROI = 29.8 M / 1.2 M = 2 483 %  </div>
+                    <div class="option" data-answer="B">B. (200 000 × 500 × 0.05) – 1 200 000 = –200 k; ROI negative, reject control  </div>
+                    <div class="option" data-answer="C">C. (200 000 × 500 × 0.25) – 1 200 000 = 23.8 M; ROI = 23.8 M / 1.2 M = 1 983 %  </div>
+                    <div class="option" data-answer="D">D. 1 200 000 / (200 000 × 500) = 0.012; ROI = 1.2 %  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    The relevant saving is the reduction in expected loss (0.3 – 0.05 = 0.25) multiplied by records and fine, minus cost (C). A uses old probability, not reduction. B uses post-mitigation probability incorrectly. D computes cost as percentage of maximum loss, not ROI.
+                </div>
+            </div>
+
+            <div class="question" data-question="42">
+                <div class="question-number">Question 42</div>
+                <div class="question-text">Q6. A financial regulator fines a bank USD 20 million for “failure to employ adequate risk-management governance.” The bank’s CIO had approved a USD 5 million security program that was deferred three years in a row. Which governance principle was MOST directly violated?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Due care  </div>
+                    <div class="option" data-answer="B">B. Due diligence  </div>
+                    <div class="option" data-answer="C">C. Separation of duties  </div>
+                    <div class="option" data-answer="D">D. Least privilege  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Due care requires senior management to act reasonably to protect assets; repeatedly deferring a necessary security budget demonstrates negligence. Due diligence (B) is the ongoing monitoring activity—absent here but not the primary breach. C and D are operational controls unrelated to governance accountability.
+                </div>
+            </div>
+
+            <div class="question" data-question="43">
+                <div class="question-number">Question 43</div>
+                <div class="question-text">Q6. A national telecom regulator proposes a new rule: “Critical-network operators must maintain at least 99.99 % availability averaged over any calendar month, measured at the service interface.” The CISO calculates that achieving this will require N+2 redundancy and an estimated USD 40 M CAPEX. The CFO argues this is a “business decision,” not a security issue. Which CISSP concept BEST supports the CISO’s position that availability requirements are within the security programme’s scope?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. The AIC triad  </div>
+                    <div class="option" data-answer="B">B. ISO 27001 Annex A controls  </div>
+                    <div class="option" data-answer="C">C. COBIT DSS05 process  </div>
+                    <div class="option" data-answer="D">D. COSO ERM cube  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Availability is one leg of the AIC (confidentiality, integrity, availability) triad foundational to security management. The other choices are frameworks or processes that implement but do not define the scope.
+                </div>
+            </div>
+
+            <div class="question" data-question="44">
+                <div class="question-number">Question 44</div>
+                <div class="question-text">Q2. A hospital’s executive committee asks the security team to quantify the annualized loss expectancy (ALE) of a new ransomware threat. The team estimates an attack would corrupt 20 % of the 5 TB PACS image archive. Recovery cost is $2,000 per TB, downtime is 6 hr at $15,000/hr, and the attack probability is 25 % per year. What ALE should be presented?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. $27,500  </div>
+                    <div class="option" data-answer="B">B. $30,000  </div>
+                    <div class="option" data-answer="C">C. $32,500  </div>
+                    <div class="option" data-answer="D">D. $130,000  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    ALE = SLE × ARO. Single loss = (5 TB × 20 % × $2,000) + (6 hr × $15,000) = $2,000 + $90,000 = $92,000. ARO = 0.25. ALE = $92,000 × 0.25 = $23,000 (corruption) + $9,500 (downtime portion) = $32,500. A omits downtime; B omits corruption; D uses ARO = 1.
+                </div>
+            </div>
+
+            <div class="question" data-question="45">
+                <div class="question-number">Question 45</div>
+                <div class="question-text">Q8. A software company’s security steering group has approved a risk response that relocates sensitive R&D source code from an on-premise data center to an IaaS provider headquartered in a foreign country. The CISO’s next task is to update the corporate risk register. Which update is MOST critical for maintaining traceability?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Change the threat entry from “insider theft” to “foreign government subpoena” and re-score residual risk  </div>
+                    <div class="option" data-answer="B">B. Reduce the inherent risk score because the cloud provider is ISO 27001 certified  </div>
+                    <div class="option" data-answer="C">C. Remove the risk entry because the code now resides outside the company’s physical perimeter  </div>
+                    <div class="option" data-answer="D">D. Add a new risk entry for “cloud misconfiguration” and assign risk ownership to the cloud provider  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    The threat landscape changes with jurisdiction; the register must reflect new threats (e.g., extraterritorial subpoena) and updated residual risk. B incorrectly lowers inherent risk—certification does not eliminate it. C destroys audit trail and violates risk-management principles. D is partially correct but assigning ownership to the provider is invalid; the company always retains risk ownership.
+                </div>
+            </div>
+
+            <div class="question" data-question="46">
+                <div class="question-number">Question 46</div>
+                <div class="question-text">Q5. A multinational manufacturer is negotiating cyber-insurance for the first time. The insurer requires a documented risk-appetite statement. Which of the following statements BEST satisfies the insurer’s requirement while remaining internally useful?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. “The organization has a zero-risk tolerance for any event that could disrupt manufacturing.”  </div>
+                    <div class="option" data-answer="B">B. “The organization accepts no more than a 2% deviation from annual revenue due to cyber events, with a confidence level of 95%, and will insure or mitigate beyond this threshold.”  </div>
+                    <div class="option" data-answer="C">C. “All cyber risk must be reduced to ‘low’ as defined by the corporate heat map.”  </div>
+                    <div class="option" data-answer="D">D. “Risk appetite is reviewed annually by the CISO and may be adjusted without board approval.”  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    A measurable, monetary risk-appetite statement (B) is auditable and aligns with both insurance underwriting and ISO 31000. A is operationally unrealistic and therefore not credible. C is qualitative and ambiguous. D omits the board’s governance role in setting risk appetite.
+                </div>
+            </div>
+
+            <div class="question" data-question="47">
+                <div class="question-number">Question 47</div>
+                <div class="question-text">Q10. A security-awareness vendor offers a phishing-simulation service that requires employees to click a link that briefly installs a benign beacon before redirecting to training. The works-council (employee union) objects, claiming the beacon is “spyware” under national labour law. The CISO argues the beacon is essential for metrics. Which governance concept should guide the final decision?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Alignment of security objectives with legal and regulatory requirements  </div>
+                    <div class="option" data-answer="B">B. Cost-benefit analysis of the training programme  </div>
+                    <div class="option" data-answer="C">C. Principle of least privilege  </div>
+                    <div class="option" data-answer="D">D. Single sign-on integration  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Labour law is a regulatory requirement; security must align with it (A). Cost-benefit (B) is secondary to legal compliance. Least privilege (C) and SSO (D) are technical, not governance, issues.
+                </div>
+            </div>
+
+            <div class="question" data-question="48">
+                <div class="question-number">Question 48</div>
+                <div class="question-text">Q5. A fintech start-up is building a mobile payment app. The founders, former software engineers, decide to embed privacy-by-design by minimizing data collection to only “name, phone, and card token.” A venture-capital partner warns that this approach may create a competitive disadvantage against rivals that use behavioral analytics. Which ethical principle should the founders prioritize when weighing the decision?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Beneficence—maximizing societal benefit even if it reduces profit  </div>
+                    <div class="option" data-answer="B">B. Non-maleficence—avoiding harm to users by limiting data exposure  </div>
+                    <div class="option" data-answer="C">C. Justice—ensuring equal access to the app across all demographics  </div>
+                    <div class="option" data-answer="D">D. Fidelity—maintaining loyalty to investor financial interests  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Non-maleficence (“do no harm”) directly supports the decision to limit data, thereby reducing breach impact and surveillance potential. Beneficence (A) is broader and subjective. Justice (C) concerns fairness, not data minimization. Fidelity (D) to investors is secondary to ethical duty to users.
+                </div>
+            </div>
+
+            <div class="question" data-question="49">
+                <div class="question-number">Question 49</div>
+                <div class="question-text">Q5. A software company’s board wants to quantify cyber-risk in monetary terms for the annual report. The CISO proposes a FAIR analysis. Which FAIR component estimates the probable frequency of a threat event?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. LEF (Loss Event Frequency)  </div>
+                    <div class="option" data-answer="B">B. TEF (Threat Event Frequency)  </div>
+                    <div class="option" data-answer="C">C. Vuln (Vulnerability)  </div>
+                    <div class="option" data-answer="D">D. TCap (Threat Capability)  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    TEF is the rate at which a specific threat actor is expected to act against an asset. LEF is the subset of those events that become loss events after accounting for controls and vulnerability. Vuln describes the asset’s susceptibility, and TCap describes the attacker’s strength.
+                </div>
+            </div>
+
+            <div class="question" data-question="50">
+                <div class="question-number">Question 50</div>
+                <div class="question-text">Q3. A fast-growing SaaS start-up has limited security staff. The CISO wants to adopt a control framework that will satisfy both SOC 2 Type II audits and future enterprise customers without imposing heavy documentation overhead. Which of the following approaches BEST aligns with risk-management best practice?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Map SOC 2 criteria to ISO 27001 Annex A and implement only the controls that are material to the company’s risk profile  </div>
+                    <div class="option" data-answer="B">B. Adopt the NIST SP 800-53 moderate baseline in its entirety to ensure no control gaps  </div>
+                    <div class="option" data-answer="C">C. Outsource all security functions to a managed service provider that is ISO 27001 certified  </div>
+                    <div class="option" data-answer="D">D. Delay framework adoption until the company reaches 250 employees, then perform a single risk assessment  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Risk management is context-specific; adopting only material controls avoids “check-box” security while still meeting audit needs. B creates unnecessary overhead for a start-up. C transfers operational burden but does not eliminate risk ownership or the need for internal governance. D postpones risk treatment and violates the principle of due care.
+                </div>
+            </div>
+
+            <div class="question" data-question="51">
+                <div class="question-number">Question 51</div>
+                <div class="question-text">Q2. A hospital is negotiating a radiology-outsourcing contract with a third-party that will store CT scans containing patient data. The CISO must ensure the vendor contract meets HIPAA requirements. Which contractual clause BEST demonstrates that the hospital has met its “business associate agreement” obligation?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Right to require annual penetration tests paid by the vendor.  </div>
+                    <div class="option" data-answer="B">B. Requirement that the vendor return and securely destroy all PHI within 30 days of contract termination.  </div>
+                    <div class="option" data-answer="C">C. Service-level agreement guaranteeing 99.9 % uptime for image retrieval.  </div>
+                    <div class="option" data-answer="D">D. Indemnity clause limiting the hospital’s liability to USD 1 million per breach.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    HIPAA explicitly requires a BAA to mandate return or destruction of PHI at termination. This addresses the Security Rule’s “assigned security responsibility” and Privacy Rule’s minimum-necessary principle. A is good but not explicitly required; C is operational, not privacy-focused; D is risk transfer, not core HIPAA compliance.
+                </div>
+            </div>
+
+            <div class="question" data-question="52">
+                <div class="question-number">Question 52</div>
+                <div class="question-text">Q7. A defense contractor uses the NIST SP 800-171 control set to protect controlled unclassified information (CUI) on a local file server. A new subsidiary in Canada must access the same CUI via a VPN. Which step is REQUIRED before allowing access?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Update the risk register to reflect cross-border data flows.  </div>
+                    <div class="option" data-answer="B">B. Obtain a Canadian government security clearance for the subsidiary.  </div>
+                    <div class="option" data-answer="C">C. Map 800-171 controls against Canadian Centre for Cyber Security ITSG-33 and document any gaps.  </div>
+                    <div class="option" data-answer="D">D. Encrypt the VPN with AES-256 and continue current controls.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    DFARS 252.204-7012 requires that any subsidiary handling CUI on behalf of the prime contractor apply “equivalent” security; mapping against ITSG-33 proves equivalence. A is necessary but not sufficient; B is not required for CUI; D ignores potential gaps in logging, incident response, etc.
+                </div>
+            </div>
+
+            <div class="question" data-question="53">
+                <div class="question-number">Question 53</div>
+                <div class="question-text">Q3. A hospital system is negotiating cyber-insurance coverage. The insurer offers a 25 % premium reduction if the hospital can demonstrate that it has “implemented an organization-wide risk management framework aligned to ISO 27005.” Which document will BEST satisfy the insurer’s requirement?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. The hospital’s balanced scorecard showing KPI trends for the last four quarters  </div>
+                    <div class="option" data-answer="B">B. A signed attestation from the CIO that HIPAA controls are “effectively deployed”  </div>
+                    <div class="option" data-answer="C">C. The hospital’s most recent risk assessment report with an executive summary mapping methodology to ISO 27005  </div>
+                    <div class="option" data-answer="D">D. A spreadsheet listing every CVE patched in the prior month  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    The risk assessment report (C) explicitly shows the hospital follows ISO 27005 scoping, risk identification, analysis, and treatment steps. A balanced scorecard (A) is too high-level, a CIO attestation (B) lacks objective evidence, and a CVE list (D) addresses only vulnerability management, not enterprise risk.
+                </div>
+            </div>
+
+            <div class="question" data-question="54">
+                <div class="question-number">Question 54</div>
+                <div class="question-text">Q3. A U.S.-based cloud company is negotiating with a European utility to process smart-grid data. The utility insists that the provider become “GDPR art. 28 compliant” and “certified under the EU-U.S. Data Privacy Framework (DPF).” The provider’s GC notes that DPF certification is optional and GDPR Article 28 is only one of several lawful paths. The CISO recommends instead signing Standard Contractual Clauses (SCCs) and encrypting data at rest with keys kept in the United States. Which concept is MOST relevant to determining whether the CISO’s recommendation introduces unacceptable residual risk?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Due care versus due diligence  </div>
+                    <div class="option" data-answer="B">B. Legal precedent in Schrems II  </div>
+                    <div class="option" data-answer="C">C. Safe-harbour sunset provisions  </div>
+                    <div class="option" data-answer="D">D. NIST SP 800-53 control baselines  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Schrems II (B) invalidated Privacy Shield and cast doubt on SCCs absent “supplementary measures” for U.S. government surveillance risk, directly impacting the CISO’s plan. Due care/diligence (A) is too generic. Safe-harbour (C) is obsolete. NIST baselines (D) are technical and do not address cross-border transfer law.
+                </div>
+            </div>
+
+            <div class="question" data-question="55">
+                <div class="question-number">Question 55</div>
+                <div class="question-text">Q1. The CISO of a global retailer learns that a new EU regulation will require explicit, revocable consent for every instance of biometric processing. The company currently uses facial-recognition cameras in 800 stores to detect known shoplifters, and the data is stored in a cloud located in the United States. Which action is MOST appropriate in the first 30 days?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Re-configure cameras to blur faces by default and only un-blur when a court order is received.  </div>
+                    <div class="option" data-answer="B">B. Draft a binding corporate rule (BCR) that unilaterally declares the data transfers as adequate.  </div>
+                    <div class="option" data-answer="C">C. Perform a gap analysis that maps every biometric data flow against the new consent and transfer requirements.  </div>
+                    <div class="option" data-answer="D">D. Immediately re-route all video feeds to a new EU-based cloud region and delete the U.S. copies.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    A gap analysis is the first step to understand the scope of non-compliance before designing controls (ISO 27001 Plan-Do-Check-Act). A is wrong because it may not satisfy the “explicit consent” requirement and could cripple loss-prevention. B is wrong because BCRs must be approved by regulators, not self-declared. D is premature and costly without knowing retention limits, legal basis, or whether onward transfers are still allowed.
+                </div>
+            </div>
+
+            <div class="question" data-question="56">
+                <div class="question-number">Question 56</div>
+                <div class="question-text">Q6. A city government is deploying body-worn cameras for police officers. Civil-rights groups worry that footage could be used for unauthorized facial-recognition surveillance. Legally, the police department can record in public spaces, but the mayor wants to demonstrate ethical data use. Which risk treatment option BEST addresses ethical concerns while remaining compliant with the law?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Avoid the risk by canceling the camera program entirely  </div>
+                    <div class="option" data-answer="B">B. Transfer the risk by requiring the camera vendor to indemnify the city against privacy lawsuits  </div>
+                    <div class="option" data-answer="C">C. Mitigate the risk through policy prohibiting facial-recognition processing of footage without court order and conduct annual audits  </div>
+                    <div class="option" data-answer="D">D. Accept the risk because the recording activity itself is legal  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Ethical risk is still risk; mitigation via policy and audit demonstrates due care and maintains public trust. A is an extreme business-negative. B does not prevent reputational damage. D ignores stakeholder trust and could increase liability if misuse occurs.
+                </div>
+            </div>
+
+            <div class="question" data-question="57">
+                <div class="question-number">Question 57</div>
+                <div class="question-text">Q7. A software vendor offers a bug-bounty program that pays up to USD 50 000 for critical vulnerabilities. A security researcher discovers a flaw that exposes personal data of 100 000 users and demands USD 200 000 “consulting fee” or he will publish the flaw on social media. The vendor’s legal team classifies this as extortion. Which CISSP ethical principle MOST directly conflicts with paying the researcher?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Protect society, the common good, necessary public trust and confidence, and the infrastructure.  </div>
+                    <div class="option" data-answer="B">B. Act honorably, honestly, justly, responsibly, and legally.  </div>
+                    <div class="option" data-answer="C">C. Provide diligent and competent service to principals.  </div>
+                    <div class="option" data-answer="D">D. Advance and protect the profession.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Paying an extortionate demand violates legal and honest conduct (B). While protecting society (A) is important, the immediate conflict is the unethical/illegal nature of the payment. Competent service (C) and advancing the profession (D) are secondary.
+                </div>
+            </div>
+
+            <div class="question" data-question="58">
+                <div class="question-number">Question 58</div>
+                <div class="question-text">Q6. A government agency has classified a new citizen-identity database as “Top Secret” and mandated that all backups be stored with the same classification. A contractor suggests using a public cloud with FIPS-140-2 Level 3 encryption to cut costs. Which concept prevents this proposal from being accepted?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Data sovereignty requirements that prohibit cross-border storage  </div>
+                    <div class="option" data-answer="B">B. The need for an equivalent technical, procedural and legal environment  </div>
+                    <div class="option" data-answer="C">C. The absence of zero-knowledge architecture in the cloud offering  </div>
+                    <div class="option" data-answer="D">D. Lack of redundant power feeds in the chosen availability zone  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    For classified data, the cloud must provide an overall environment equivalent to that mandated by the classification—technical, procedural, contractual, legal. Sovereignty (A) may or may not apply. Zero-knowledge (C) is a subset of technical controls. Power feeds (D) are availability, not confidentiality, concerns.
+                </div>
+            </div>
+
+            <div class="question" data-question="59">
+                <div class="question-number">Question 59</div>
+                <div class="question-text">Q1. A global pharmaceutical company is about to acquire a smaller competitor that has a promising drug pipeline but a history of compliance violations. The CISO has been asked to provide a security opinion to the M&A steering committee within five business days. The due-diligence data room contains only high-level policy documents and last year’s SOC-2 Type II report. Which of the following is the MOST important next step before forming an opinion?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Accept the SOC-2 report at face value and note no critical findings.  </div>
+                    <div class="option" data-answer="B">B. Request the right to perform a targeted security assessment of the competitor’s R&D network.  </div>
+                    <div class="option" data-answer="C">C. Calculate the annualized loss expectancy (ALE) for each drug patent.  </div>
+                    <div class="option" data-answer="D">D. Draft a memorandum of understanding (MOU) requiring the competitor to adopt the parent’s security policy on Day 1.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    A targeted assessment (B) provides the evidence needed to judge residual risk before the company is legally and financially committed. Accepting the SOC-2 (A) ignores the competitor’s compliance history and the limited scope of SOC-2. Calculating ALE (C) is premature without understanding the actual control gaps. Drafting an MOU (D) is a post-deal activity and does not inform the current risk decision.
+                </div>
+            </div>
+
+            <div class="question" data-question="60">
+                <div class="question-number">Question 60</div>
+                <div class="question-text">Q4. A cloud SaaS provider stores EU customer data in AWS Dublin and US customer data in AWS us-east-1. A new German customer requires that its data never leave the EU, even for support tickets. The provider’s standard contract states: “Support may be performed from any location where our personnel reside.” Which governance action should the provider take FIRST?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Enable AWS CloudTrail in Dublin to log all API calls  </div>
+                    <div class="option" data-answer="B">B. Draft a data-processing addendum (DPA) that limits support access to EU-based staff  </div>
+                    <div class="option" data-answer="C">C. Perform a business-impact analysis (BIA) for the German customer  </div>
+                    <div class="option" data-answer="D">D. Encrypt all data stored in Dublin with customer-managed keys  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    The contractual statement is the primary compliance gap; a DPA (B) modifies it to satisfy data-localization requirements before any technical controls matter. CloudTrail (A) and encryption (D) do not prevent cross-border human access. A BIA (C) is useful but does not address the immediate legal issue.
+                </div>
+            </div>
+
+        </form>
+        
+        <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+        
+        <div class="results" id="results">
+            <h2>Quiz Complete!</h2>
+            <div class="score" id="score">0%</div>
+            <p id="result-text"></p>
+        </div>
+    </div>
+    
+    <script>
+        let timeLimit = 180; // 3 minutes per question default
+        let timeRemaining = timeLimit * 60;
+        let timerInterval;
+        
+        // Timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                document.getElementById('timer').textContent = 
+                    minutes.toString().padStart(2, '0') + ':' + 
+                    seconds.toString().padStart(2, '0');
+                
+                if (timeRemaining < 300) { // 5 minutes warning
+                    document.getElementById('timer').classList.add('warning');
+                }
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+        
+        // Option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.question');
+                question.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        // Submit quiz
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.question').forEach(q => {
+                total++;
+                const selected = q.querySelector('.option.selected');
+                const correctAnswer = q.querySelector('.explanation').dataset.correct;
+                const explanation = q.querySelector('.explanation');
+                
+                explanation.classList.add('show');
+                
+                if (selected) {
+                    if (selected.dataset.answer === correctAnswer) {
+                        selected.classList.add('correct');
+                        correct++;
+                    } else {
+                        selected.classList.add('wrong');
+                        q.querySelector('.option[data-answer="' + correctAnswer + '"]').classList.add('correct');
+                    }
+                } else {
+                    q.querySelector('.option[data-answer="' + correctAnswer + '"]').classList.add('correct');
+                }
+            });
+            
+            const percentage = Math.round((correct / total) * 100);
+            document.getElementById('score').textContent = percentage + '%';
+            document.getElementById('result-text').textContent = 
+                'You got ' + correct + ' out of ' + total + ' correct';
+            document.getElementById('results').style.display = 'block';
+            document.querySelector('.btn').style.display = 'none';
+        }
+        
+        startTimer();
+    </script>
+</body>
+</html>

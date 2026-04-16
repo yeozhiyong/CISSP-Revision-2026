@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CISSP Practice - Domain 5 - Identity and Access Management</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: #00d4ff; text-align: center; margin-bottom: 10px; }
+        .timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #16213e;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+        .timer.warning { color: #ff6b6b; border-color: #ff6b6b; }
+        .progress {
+            background: #16213e;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .question {
+            background: #16213e;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00d4ff;
+        }
+        .question-number { color: #00d4ff; font-weight: bold; margin-bottom: 10px; }
+        .question-text { font-size: 18px; margin-bottom: 20px; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option {
+            background: #0f3460;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .option:hover { background: #1a4a7a; }
+        .option.selected { border-color: #00d4ff; background: #1a4a7a; }
+        .option.correct { border-color: #4ade80; background: #1a4a3a; }
+        .option.wrong { border-color: #ff6b6b; background: #4a1a2a; }
+        .explanation {
+            display: none;
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #4ade80;
+        }
+        .explanation.show { display: block; }
+        .btn {
+            background: #00d4ff;
+            color: #1a1a2e;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+        }
+        .btn:hover { background: #33ddff; }
+        .results {
+            display: none;
+            background: #16213e;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .score { font-size: 48px; color: #00d4ff; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="timer" id="timer">--:--</div>
+    <div class="container">
+        <h1>🎓 CISSP Practice - Domain 5 - Identity and Access Management</h1>
+        <div class="progress">Question <span id="current">1</span> of 62</div>
+        
+        <form id="quiz-form">
+
+            <div class="question" data-question="1">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">Q5. A SaaS vendor offers a multi-tenant HR platform. Each corporate customer wants to provision users from its own on-premise AD and enforce group-based access inside the SaaS. The vendor’s database has a single “Users” table that uses a UUID primary key. Which data-modeling approach BEST preserves referential integrity while allowing customers to bring their own identity provider?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Add a “customer_id” column and store the customer’s internal AD DN as the authoritative external_id  </div>
+                    <div class="option" data-answer="B">B. Create one database schema per customer and replicate the SaaS authorization tables inside each schema  </div>
+                    <div class="option" data-answer="C">C. Introduce a federated-linking table that maps (customer_id, external_id) to the platform-wide UUID  </div>
+                    <div class="option" data-answer="D">D. Hash the user’s email address and use that as the global primary key  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    A federated-linking table isolates the vendor’s internal UUID from every customer’s external identifier, supporting multiple IdPs, mergers, and email changes without altering core tables. Per-customer schemas explode operational cost, DN storage ties the app to LDAP specifics, and email hashing collides when employees change employers.
+                </div>
+            </div>
+
+            <div class="question" data-question="2">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">Q10. A conglomerate is acquiring a competitor whose employees currently use consumer Gmail with 2FA to access Google Workspace. The conglomerate’s policy requires that all enterprise identities be provable to its central HR system of record and that all access be terminated automatically upon HR work-status change.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Configure Google Cloud Directory Sync (GCDS) to pull from the conglomerate’s authoritative LDAP; then switch Google Workspace to require SAML SSO from the conglomerate’s IdP.  </div>
+                    <div class="option" data-answer="B">B. Export Google accounts to CSV and ask users to self-register in the conglomerate IdP.  </div>
+                    <div class="option" data-answer="C">C. Disable 2FA in Google and force password reset.  </div>
+                    <div class="option" data-answer="D">D. Add UPN suffixes to the Google accounts to match the conglomerate domain and leave passwords unchanged.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    GCDS populates Google with the HR-mastered identities, while SAML SSO moves authentication to the conglomerate’s IdP, ensuring that termination in HR disables login. CSV (B) is manual and error-prone; disabling 2FA (C) weakens security; UPN alignment (D) does not establish authoritative identity or termination.
+                </div>
+            </div>
+
+            <div class="question" data-question="3">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">Q6. [Scenario] A startup stores customer passwords using Argon2id with 1 MB memory cost, 8 parallelism, 3 iterations, and 32-byte salt. A penetration tester recovers the salt and hash for a single user and budgets USD 5,000 of AWS g4dn GPU time for cracking. Which single change to the password policy MOST reduces the probability of compromise without increasing user friction significantly?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Require 15-character minimum with no complexity rules  </div>
+                    <div class="option" data-answer="B">B. Add a 16-byte pepper stored in an HSM  </div>
+                    <div class="option" data-answer="C">C. Double the Argon2id iterations to 6  </div>
+                    <div class="option" data-answer="D">D. Force users to change passwords every 30 days  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    A pepper (secret key) stored outside the authentication DB (ideally in an HSM) means the attacker cannot perform an offline brute-force attack even with the hash and salt. 15-char passphrases (A) help but are not as strong as a secret parameter unknown to the attacker; doubling iterations (C) only linearly increases cost; 30-day expiry (D) increases friction and does little against offline attacks.
+                </div>
+            </div>
+
+            <div class="question" data-question="4">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">Q9. A financial regulator publishes a new rule: any privileged account that can move funds must use “something you have” plus “something you are” plus “something you know.” The bank’s current setup uses PIV cards (have) and PIN (know) for admins, but no biometrics. Which option is the least-cost path to full compliance without replacing the existing card infrastructure?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Add Windows Hello facial recognition and require all three factors in a single sequential flow.  </div>
+                    <div class="option" data-answer="B">B. Replace PIV with FIDO2 security keys that have built-in fingerprint readers and require a PIN.  </div>
+                    <div class="option" data-answer="C">C. Keep PIV, add a biometric overlay app that challenge–response signs a nonce with the card’s private key after a fingerprint match.  </div>
+                    <div class="option" data-answer="D">D. Require two people: one with PIV+PIN, the other with fingerprint only; treat the pair as one logical admin session.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Option C layers biometric (“something you are”) on top of the existing PIV (“something you have”) and PIN (“something you know”) without ripping out cards or buying new hardware beyond fingerprint readers. Windows Hello (A) does not integrate natively with PIV for all scenarios (e.g., SSH, mainframe). FIDO2 keys (B) require new readers and new certificate chain. Dual-person (D) is not accepted by most regulators as a substitute for individual multi-factor authentication.
+                </div>
+            </div>
+
+            <div class="question" data-question="5">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">Q7. A zero-trust initiative mandates that every API call between microservices be authenticated with a short-lived JWT issued by an internal OAuth authorization server (AS). Performance tests show that the AS becomes a bottleneck at 20 000 token exchanges per second. Which architectural change BEST scales the service while preserving centralized policy control?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Switch to self-signed JWTs signed by each microservice’s own private key; embed user claims and skip the AS entirely.  </div>
+                    <div class="option" data-answer="B">B. Issue long-lived opaque refresh tokens; allow microservices to exchange them once per hour for a bulk JWT good for all calls in that hour.  </div>
+                    <div class="option" data-answer="C">C. Deploy regional AS clusters that replicate policy sets; use distributed consensus to maintain revocation lists; keep JWT lifetime under 5 minutes.  </div>
+                    <div class="option" data-answer="D">D. Cache the AS verification public key in a CDN; allow microservices to accept JWTs up to one day old.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Regional AS clusters horizontalize the issuance load while still enforcing the same policy set synchronized through consensus. Five-minute JWTs keep the revocation window small, satisfying zero-trust principles. Self-signed JWTs (A) eliminate centralized control and allow any microservice to mint unlimited tokens. Long-lived bulk JWTs (B) create a large blast radius if compromised. CDN key caching (D) does not reduce AS load and allows stale tokens.
+                </div>
+            </div>
+
+            <div class="question" data-question="6">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">Q2. A hospital’s on-premise Epic electronic health-record (EHR) system uses LDAP for authentication. After acquiring three rural clinics that use cloud-based Office 365, the CISO wants clinicians to use their existing hospital credentials to access both Epic and Office 365 without re-authenticating and without synchronizing passwords to Azure AD. Which architecture is MOST appropriate?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Deploy Azure AD Pass-Through Authentication with seamless SSO  </div>
+                    <div class="option" data-answer="B">B. Stand up an on-premise ADFS farm and federate Azure AD  </div>
+                    <div class="option" data-answer="C">C. Install Azure AD Password Hash Sync plus Microsoft Authenticator  </div>
+                    <div class="option" data-answer="D">D. Replace LDAP with an on-premise SAML IdP and register Epic as SP  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    ADFS provides true federation—Azure AD trusts the hospital’s ADFS to vouch for the user, so no password hashes leave the hospital, satisfying healthcare-sector resistance to cloud password stores. Pass-through still proxies the password, which some risk committees reject, Password Hash Sync replicates hashes (unwanted), and replacing LDAP wholesale is disruptive and unnecessary.
+                </div>
+            </div>
+
+            <div class="question" data-question="7">
+                <div class="question-number">Question 7</div>
+                <div class="question-text">Q4. A defense contractor runs a classified enclave that requires PIV card-based TLS mutual authentication. Users frequently move between the enclave and an adjacent unclassified network that relies on username/password. The CISO wants a single logical access-control system that can enforce “high-assurance only inside the enclave” without re-creating user accounts. Which design BEST achieves this goal?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Issue shadow accounts in the unclassified domain and use transitive forest trust  </div>
+                    <div class="option" data-answer="B">B. Store PIV-derived user certificates in a single LDAP directory and perform certificate-to-account mapping on both networks  </div>
+                    <div class="option" data-answer="C">C. Deploy a centralized RADIUS server that returns different VLAN attributes based on authentication strength  </div>
+                    <div class="option" data-answer="D">D. Keep separate directories and synchronize the userCertificate attribute hourly  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Mapping certificates to a single identity store (LDAP/AD) allows the same account to be used everywhere while the relying systems enforce authentication strength appropriate to the zone. RADIUS only handles network admission, not application logins. Shadow accounts and trusts double the attack surface, and hourly sync creates windows of inconsistency.
+                </div>
+            </div>
+
+            <div class="question" data-question="8">
+                <div class="question-number">Question 8</div>
+                <div class="question-text">Q6. A defense contractor is implementing PIV card authentication for Windows desktops that process CUI (Controlled Unclassified Information). The Security Controls Assessor insists that the solution must enforce “PIV-derived” credentials on the wire, not just card presence at logon. Which configuration satisfies the assessor’s requirement?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Enable Smart-card logon, map PIV certificates to AD accounts, and enforce TLS mutual authentication for every intranet web application.  </div>
+                    <div class="option" data-answer="B">B. Configure Kerberos to use PKINIT so that the user’s initial Kerberos TGT is obtained via the PIV private key.  </div>
+                    <div class="option" data-answer="C">C. Deploy Credential Guard so that NTLM hashes are never stored in LSASS.  </div>
+                    <div class="option" data-answer="D">D. Force all users to change their AD password to a 32-character random value that they store in a PIV-enabled password manager.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    PKINIT binds the Kerberos authentication to the PIV private key, ensuring that any network authentication (SMB, HTTP, RDP) uses the PIV-derived credential rather than a password hash. Smart-card logon alone (A) only affects interactive logon. Credential Guard (C) protects hashes but does not replace them with PIV-derived credentials. Option D still relies on a memorized or stored password.
+                </div>
+            </div>
+
+            <div class="question" data-question="9">
+                <div class="question-number">Question 9</div>
+                <div class="question-text">Q3. A DevOps pipeline builds container images that are tagged with the git commit SHA. Security policy demands that only images signed by the CI system’s hardware-backed code-signing certificate may run in the production Kubernetes cluster. Which IAM control BEST enforces this requirement at runtime?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. OPA Gatekeeper validating admission webhook that checks the image signature against the CI’s public key  </div>
+                    <div class="option" data-answer="B">B. RBAC rules restricting the ‘create pods’ verb to the CI service account  </div>
+                    <div class="option" data-answer="C">C. ImagePullPolicy set to ‘Always’ combined with Docker Content Trust  </div>
+                    <div class="option" data-answer="D">D. PodSecurityPolicy that enforces the ‘runAsNonRoot’ constraint  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    OPA Gatekeeper (or Conftest) can evaluate rego policies that call cosign or notation to verify the signed digest. RBAC blocks who can create pods, not what image is used. ImagePullPolicy and Docker Content Trust rely on the node’s local configuration and do not provide centralized, attestable enforcement. PodSecurityPolicy governs runtime privileges, not image provenance.
+                </div>
+            </div>
+
+            <div class="question" data-question="10">
+                <div class="question-number">Question 10</div>
+                <div class="question-text">Q8. A large retailer runs a hybrid cloud: PCI-scoped cardholder data stays on-prem, while marketing workloads run in AWS.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. AWS SSO with automatic IAM role chaining and on-prem AD as the SAML IdP  </div>
+                    <div class="option" data-answer="B">B. AWS Identity Center (successor to SSO) with OIDC federation to the on-prem AD FS  </div>
+                    <div class="option" data-answer="C">C. Cross-account IAM roles with external IDs and long-lived access keys stored in CyberArk  </div>
+                    <div class="option" data-answer="D">D. AWS SSO with SCIM provisioning from Azure AD and short-lived CLI sessions via AWS SSO native CLI v2  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    AWS SSO (now Identity Center) issues short-lived STS tokens via the `aws sso login` CLI command; no keys are stored. SCIM ensures that only active Azure AD accounts get SSO access. Option A is acceptable but AWS SSO CLI v2 is more seamless. AD FS (B) still requires SAML assertions that the CLI must handle manually. Long-lived keys (C) violate PCI Req. 8.
+                </div>
+            </div>
+
+            <div class="question" data-question="11">
+                <div class="question-number">Question 11</div>
+                <div class="question-text">Q6. A defence contractor must implement PIV (personal-identity-verification) card authentication for Windows workstations that are often disconnected from the corporate network.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Credential Guard with VBS  </div>
+                    <div class="option" data-answer="B">B. Active Directory Certificate Services (ADCS) with delta-CRL prefetch  </div>
+                    <div class="option" data-answer="C">C. AD cached-logon and OCSP stapling  </div>
+                    <div class="option" data-answer="D">D. Windows Hello for Business key-based authentication  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    ADCS can push delta-CRLs to each workstation’s cache before disconnection, allowing the LSA to verify non-revocation offline. Credential Guard (A) protects against pass-the-hash but does not evaluate revocation. OCSP (C) requires online connectivity. Hello for Business (D) is a different modality and does not use PIV.
+                </div>
+            </div>
+
+            <div class="question" data-question="12">
+                <div class="question-number">Question 12</div>
+                <div class="question-text">Q1. Your company’s cloud-first initiative requires that all on-prem Windows file shares be replaced by a SaaS-based collaboration suite. The current on-prem ACLs are role-based and reference groups stored in Microsoft Active Directory (AD). The SaaS vendor supports SAML 2.0, SCIM provisioning, and “static” (manually created) groups. Management wants terminated employees to lose access within 15 minutes and wants to avoid creating groups manually in the SaaS. Which architecture best satisfies these goals?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Federate AD with the SaaS via SAML; export nightly CSV of group changes; import CSV to SaaS.  </div>
+                    <div class="option" data-answer="B">B. Deploy a SCIM endpoint in AD; configure the SaaS to pull identities and groups every five minutes; continue using AD groups for RBAC.  </div>
+                    <div class="option" data-answer="C">C. Replicate the AD group objects to a new LDAP directory; point the SaaS at that LDAP for authentication and authorization.  </div>
+                    <div class="option" data-answer="D">D. Switch from role-based access to “just-in-time” tickets; require managers to approve each login in the SaaS portal.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    SCIM is the only option that provides automated, near-real-time provisioning and de-provisioning of both users and groups. A five-minute pull interval keeps the lag under the 15-minute requirement, and continuing to use AD groups preserves the existing RBAC model without manual duplication. CSV imports (A) are too slow and error-prone. LDAP replication (C) still leaves the SaaS performing authentication, which does not meet the de-provisioning objective unless the SaaS also supports LDAP compares—something not stated. Just-in-time tickets (D) abandon RBAC entirely and create operational overhead.
+                </div>
+            </div>
+
+            <div class="question" data-question="13">
+                <div class="question-number">Question 13</div>
+                <div class="question-text">Q7. A tech start-up has 120 AWS accounts. Developers frequently open support tickets such as “I need S3 full-access for 2 hours to troubleshoot.” The IAM team is drowning in ad-hoc grants and wants to eliminate standing privileges while still letting devs help themselves.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. AWS IAM Identity Center (SSO) + AWS IAM Identity Center delegated admin + PermissionSet with S3FullAccess and 2-hour maximum session duration.  </div>
+                    <div class="option" data-answer="B">B. Create an IAM user in each account with S3FullAccess and a 2-hour password policy.  </div>
+                    <div class="option" data-answer="C">C. Add all developers to an AD group called “S3-Full” and use AWS Config rule to remove them after 2 hours.  </div>
+                    <div class="option" data-answer="D">D. Issue root-account passwords to senior developers only.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    IAM Identity Center permission sets can be configured with 2-hour session duration and no persistent credentials; upon console/CLI expiry the access is gone, eliminating standing privileges. Config rule (C) is reactive and race-prone; individual IAM users (B) and root (D) create permanent attack surface.
+                </div>
+            </div>
+
+            <div class="question" data-question="14">
+                <div class="question-number">Question 14</div>
+                <div class="question-text">Q9. [Scenario] A university’s on-campus lab uses facial recognition turnstiles. Students protest that the biometric database could be used for surveillance. The CISO must keep anti-tailgating but address privacy. Which technical control BEST aligns with privacy-by-design while maintaining security?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Store only salted hashes of facial templates  </div>
+                    <div class="option" data-answer="B">B. Keep raw images but encrypt them with AES-256  </div>
+                    <div class="option" data-answer="C">C. Use edge-based matching: template is created at enrollment, stored on the student’s smart-card, and never centrally retained; turnstile performs 1:1 match against card  </div>
+                    <div class="option" data-answer="D">D. Anonymise templates by removing metadata and storing them in a blockchain  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Edge-based, token-based storage means the biometric never exists in a central repository, eliminating the privacy risk of mass surveillance while still preventing tailgating. Hashed templates (A) are not feasible for facial recognition because matching is fuzzy, not exact. Encryption (B) still leaves raw images under central control. Blockchain (D) is immutable, worsening privacy.
+                </div>
+            </div>
+
+            <div class="question" data-question="15">
+                <div class="question-number">Question 15</div>
+                <div class="question-text">Q8. A university’s CS department runs a Kerberos realm CS.UNIV.EDU that must trust the campus-wide realm UNIV.EDU so that students can SSH to CS machines with their campus password. Admins are concerned about a compromise in UNIV.EDU allowing golden-ticket attacks against CS servers.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Two-way transitive realm trust with no ticket-parameter restrictions.  </div>
+                    <div class="option" data-answer="B">B. One-way transitive trust where CS.UNIV.EDU trusts UNIV.EDU but not vice-versa, and set maximum ticket lifetime in cs-univ.edu to 4 hours.  </div>
+                    <div class="option" data-answer="C">C. Direct shared-secret key between the two KDCs and disable all cross-realm trust.  </div>
+                    <div class="option" data-answer="D">D. One-way non-transitive trust plus a namespacing rule that only accounts in OU=Students,DC=univ,DC=edu may obtain service tickets for CS.UNIV.EDU.  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    One-way non-transitive prevents a compromise in the larger realm from propagating further, and namespacing (via authZ plugin or KDB ACL) restricts which campus users can even request a CS service ticket, limiting attacker usefulness of any forged TGT. Short lifetime (B) helps but does not stop issuance; two-way transitive (A) maximizes blast-radius; shared secret (C) breaks SSO.
+                </div>
+            </div>
+
+            <div class="question" data-question="16">
+                <div class="question-number">Question 16</div>
+                <div class="question-text">Q10. A cloud-native company runs 100 AWS accounts. Developers assume IAM roles via single-sign-on from Okta. A recent audit found that dormant access keys older than 90 days were still valid in several accounts. The CISO wants to ensure that every human authentication to AWS uses short-lived credentials and that no long-term access keys exist for users. Which combination of controls enforces this goal with the least developer friction?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Enable AWS Organizations SCP that denies iam:CreateAccessKey for all human-assumed role sessions; require CLI access via AWS SSO token-based authentication.  </div>
+                    <div class="option" data-answer="B">B. Run a Lambda every night that deletes any access key older than 90 days and emails the owner.  </div>
+                    <div class="option" data-answer="C">C. Move all developers to federated API access using SAML and require them to use AssumeRoleWithSAML; block programmatic access keys at the network layer.  </div>
+                    <div class="option" data-answer="D">D. Issue each developer a hardware token that generates unique access keys every minute; store the seed in AWS Secrets Manager.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    AWS SSO (now IAM Identity Center) issues temporary, automatically rotating credentials to the AWS CLI v2; denying iam:CreateAccessKey via SCP prevents anyone from creating long-term keys. Nightly deletion (B) is reactive and still leaves a 90-day window. AssumeRoleWithSAML (C) works but is more complex for CLI than SSO’s built-in token refresh. Hardware tokens for access keys (D) do not exist; hardware tokens provide TOTP for MFA, not rotating access keys.
+                </div>
+            </div>
+
+            <div class="question" data-question="17">
+                <div class="question-number">Question 17</div>
+                <div class="question-text">Q6. A SaaS vendor offers an “attribute-based access control” (ABAC) engine that evaluates XACML policies. Your organization wants to grant contractors access to engineering documents only when (1) they are on-site, (2) using a corporate laptop, and (3) connected to the trusted VLAN. Which attribute category is MOST likely to be missing or unreliable in the XACML request, and how should it be obtained?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Subject attribute “on-site” — query the contractor’s smartphone GPS.  </div>
+                    <div class="option" data-answer="B">B. Resource attribute “classification” — scrape the document footer with NLP.  </div>
+                    <div class="option" data-answer="C">C. Environment attribute “trusted VLAN” — embed the VLAN ID in a SAML assertion.  </div>
+                    <div class="option" data-answer="D">D. Action attribute “read” — hard-code it in the policy because it is static.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    The VLAN ID is an environment attribute that the PEP (Policy Enforcement Point) must assert. Because the user’s device—not the user—must be on the VLAN, the most reliable method is for the network switch or 802.1X service to embed that fact in a security assertion consumed by the PEP. GPS (A) is spoofable and privacy-invasive. Resource classification (B) is irrelevant to the scenario’s constraints. Action “read” (D) is already known by the PEP and does not solve the trust problem.
+                </div>
+            </div>
+
+            <div class="question" data-question="18">
+                <div class="question-number">Question 18</div>
+                <div class="question-text">Q2. [Scenario] A SaaS vendor offers a multi-tenant HR platform. Each customer wants to use its own identity provider (IdP) and enforce its own password policy, but the SaaS application only supports a single, vendor-managed authentication realm. The vendor decides to insert a standards-based “authentication broker” in front of the application. Which combination of protocols will allow each customer’s IdP to remain authoritative while still delivering a SAML assertion to the application’s single realm?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. SAML-over-TLS between broker and app, and OpenID Connect between customer IdP and broker  </div>
+                    <div class="option" data-answer="B">B. OAuth 2.0 client-credentials between broker and app, and Kerberos between customer IdP and broker  </div>
+                    <div class="option" data-answer="C">C. WS-Federation between customer IdP and broker, and LDAPS between broker and app  </div>
+                    <div class="option" data-answer="D">D. RADIUS from customer IdP to broker, and JWT signed with HS256 between broker and app  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    The broker must consume whatever token the customer IdP issues and translate it into the one format the app understands (SAML). OpenID Connect is the modern, widely supported protocol for browser-based SSO from customer IdPs, while the app still expects SAML. The broker performs the protocol translation. Option B’s OAuth client-credentials is for service-to-service, not browser SSO; C’s WS-Federation is legacy and LDAPS is not an SSO protocol; D’s RADIUS cannot carry rich attributes for SSO.
+                </div>
+            </div>
+
+            <div class="question" data-question="19">
+                <div class="question-number">Question 19</div>
+                <div class="question-text">Q1. Your company’s cloud-first initiative requires that all on-prem Active Directory (AD) accounts be synchronised to Azure AD.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Password hash sync with seamless SSO  </div>
+                    <div class="option" data-answer="B">B. Pass-through authentication (PTA) and password write-back  </div>
+                    <div class="option" data-answer="C">C. AD FS federation with token-signing certificate rollover  </div>
+                    <div class="option" data-answer="D">D. Azure AD Connect “device write-back” and PTA  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Pass-through authentication keeps the on-prem AD as the sole credential validator; password write-back forces password changes made on-prem to be pushed immediately to Azure AD, which in turn invalidates existing SAML tokens and refresh tokens at the SaaS providers. Password hash sync (A) would still allow cached passwords to live for up to 10 min. AD FS (C) does not shorten SaaS-side caches. Device write-back (D) is irrelevant to password lifetime.
+                </div>
+            </div>
+
+            <div class="question" data-question="20">
+                <div class="question-number">Question 20</div>
+                <div class="question-text">Q8. A university’s computer-science department wants to give students temporary SSH access to isolated AWS EC2 instances for coursework. Each instance should be accessible for exactly four hours, after which the student’s public key must be removed. The solution must integrate with the existing on-prem IdP (Shibboleth/SAML) and minimize AWS IAM permissions. Which approach is MOST operationally efficient and secure?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Store student public keys in AWS Systems Manager Parameter Store; tag with expiration; run a Lambda function every minute that scans and deletes expired keys.  </div>
+                    <div class="option" data-answer="B">B. Issue AWS SSO (IAM Identity Center) credentials; allow students to create IAM users; trust policy limits EC2 access to four hours.  </div>
+                    <div class="option" data-answer="C">C. Use HashiCorp Vault’s SSH CA engine; issue short-lived signed certificates valid for four hours; authenticate students via SAML into Vault.  </div>
+                    <div class="option" data-answer="D">D. Embed the Unix “expire” command in the AMI so that the student account is disabled after four hours locally.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Vault’s SSH CA produces certificates that automatically expire; no cleanup agents or cron jobs are needed. Students authenticate to Vault with their existing SAML session, so no AWS IAM user proliferation occurs. Parameter Store (A) requires continual Lambda scanning and still leaves the public key on disk until the next scan. AWS SSO (B) forces students into the AWS console/API, which is excessive for simple SSH. Local “expire” (D) can be circumvented by changing the instance clock or editing /etc/shadow.
+                </div>
+            </div>
+
+            <div class="question" data-question="21">
+                <div class="question-number">Question 21</div>
+                <div class="question-text">Q5. A multinational retailer is merging its European and North American e-commerce platforms. Europe uses GDPR-compliant customer IAM, while North America uses a legacy LDAP. Both user populations must be able to log in to a new unified web site, but European PII cannot be replicated outside the EU. Which design satisfies legal, operational, and availability requirements?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Deploy a single global ForgeRock cluster; replicate only non-EU accounts; EU users authenticate via a satellite node that stores data locally.  </div>
+                    <div class="option" data-answer="B">B. Create a SAML identity provider (IdP) in Europe; North-American site becomes a service provider (SP); use pseudonymous NameIDs.  </div>
+                    <div class="option" data-answer="C">C. Stand up a new global Active Directory in the US; migrate all accounts; encrypt European data with AES-256.  </div>
+                    <div class="option" data-answer="D">D. Use blockchain-based decentralized identifiers (DIDs) for every customer; store encrypted attributes on IPFS.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    SAML federation allows each region to keep its directory sovereign; pseudonymous NameIDs prevent the US site from seeing GDPR-protected attributes, while still recognizing returning users. No bulk data cross-border transfer occurs. A single cluster (A) still replicates configuration and logs that may contain EU PII. Migrating to a US AD (C) is exactly what GDPR seeks to prevent. Blockchain/IPFS (D) is immature, leaks metadata, and offers no erasure capability required by GDPR “right to be forgotten.”
+                </div>
+            </div>
+
+            <div class="question" data-question="22">
+                <div class="question-number">Question 22</div>
+                <div class="question-text">Q10. A government agency runs a classified collaboration portal that enforces need-to-know using dynamic “community of interest” (COI) labels. Users can create ad-hoc COIs and invite others, but invitations must be approved by the data owner within 24 hours or the invitee’s access is automatically rescinded. Which IAM pattern BEST implements this requirement in a way that is audit-friendly and resilient to clock skew?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Create an OAuth2 “urn:ietf:params:oauth:grant-type:device_code” flow; set the device-code lifetime to 24 hours; embed COI name in the scope; require data-owner callback to extend scope.  </div>
+                    <div class="option" data-answer="B">B. Use XACML policies with obligation expressions; issue 24-hour SAML assertions; policy enforcement point (PEP) queries policy information point (PIP) for approval flag before each access.  </div>
+                    <div class="option" data-answer="C">C. Store pending invitations in a blockchain smart contract; auto-revoke if not signed by data-owner within 1440 blocks.  </div>
+                    <div class="option" data-answer="D">D. Generate 24-hour X.509 attribute certificates; include COI attribute; run a cron job every minute to check approval table and publish new CRL.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    XACML obligations let the PEP enforce the “approve within 24 h or deny” rule in real time, while the PIP can consult a database timestamped with NTP to handle clock skew. All decisions are logged centrally for audit. Device-code flow (A) is designed for input-constrained devices, not document COIs, and offers no built-in approval hook. Blockchain (C) is overkill and cannot guarantee block time accuracy. Attribute certificates (D) require a heavyweight PKI and frequent CRL updates that still leave a window where revoked certs are considered valid.
+                </div>
+            </div>
+
+            <div class="question" data-question="23">
+                <div class="question-number">Question 23</div>
+                <div class="question-text">Q4. A company is migrating 2,000 Linux servers from static /etc/passwd files to centralized authentication. Engineers frequently sudo to root for deployments. The CISO requires that any compromise of the central directory must not reveal the actual password hashes, and that sudo must still work if the directory is temporarily unreachable. Which design best meets these twin requirements?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Join servers to an LDAP directory and configure SSSD to cache hashes locally with offline_credentials_expiration = 0.  </div>
+                    <div class="option" data-answer="B">B. Join servers to Kerberos only, store principals in LDAP, and configure sudo to require Kerberos TGT.  </div>
+                    <div class="option" data-answer="C">C. Deploy LDAP for account data but configure PAM to use SSSD with “cache_credentials = yes” and store only UID/GID in LDAP, while password hashes remain in local /etc/shadow.  </div>
+                    <div class="option" data-answer="D">D. Keep /etc/passwd and rsync nightly from a central Git repo; require engineers to push new hashes via pull request.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Storing only non-sensitive account metadata in LDAP while keeping password hashes in local /etc/shadow prevents bulk hash exposure if LDAP is breached. SSSD’s cache_credentials = yes allows sudo to succeed during an LDAP outage. Option A caches hashes on every host, re-creating the original problem at scale. Option B fails the availability requirement because sudo will break if Kerberos or LDAP is down. Option D is manual, error-prone, and offers no central revocation.
+                </div>
+            </div>
+
+            <div class="question" data-question="24">
+                <div class="question-number">Question 24</div>
+                <div class="question-text">Q6. A defense contractor runs a high-side classified network that is air-gapped. Employees must use PIV cards plus 6-digit PIN for workstation logon. Security noticed that after-hours shoulder-surfing via security cameras allowed attackers to harvest PINs; later, stolen cards were used to access engineering workstations.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Enable PIV-derived PUK authentication.  </div>
+                    <div class="option" data-answer="B">B. Require biometric on-card comparison (match-on-card) in addition to PIN.  </div>
+                    <div class="option" data-answer="C">C. Issue new cards with 2048-bit RSA instead of 4096-bit.  </div>
+                    <div class="option" data-answer="D">D. Rotate PINs every 30 days.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Match-on-card biometrics tie the authentication to the live presence of the legitimate user; even if the PIN is observed and the card is stolen, the attacker cannot satisfy the biometric challenge. PUK (A) is for unlocking, key length (C) is irrelevant, and PIN rotation (D) does not stop immediate abuse.
+                </div>
+            </div>
+
+            <div class="question" data-question="25">
+                <div class="question-number">Question 25</div>
+                <div class="question-text">Q7. A university’s computer-science department grants students sudo rights on shared lab servers so they can install packages for coursework. After a root-level ransomware incident, the faculty wants to keep the sudo capability but log every command with attribution to an individual student. The existing /etc/sudoers file uses the default “%cs-students ALL=(ALL) ALL.” Which change BEST meets the new requirement?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Configure sudo to require Kerberos authentication and forward logs to syslog-ng  </div>
+                    <div class="option" data-answer="B">B. Replace sudo with setuid wrappers for approved package managers  </div>
+                    <div class="option" data-answer="C">C. Implement pam_tty_audit to capture all keystrokes  </div>
+                    <div class="option" data-answer="D">D. Migrate to a centralized AAA server that issues time-bound, signed sudo commands  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Kerberos authentication ensures the student’s principal is recorded in the sudo audit log (log_input/log_output or pam_krb5), providing non-repudiation without rewriting sudoers. Setuid wrappers are brittle and hard to maintain. pam_tty_audit captures too much noise and may include passwords. A centralized AAA (e.g., FreeIPA sudo rules) is ideal but “migrate” implies a large project, whereas Kerberos is a configuration change.
+                </div>
+            </div>
+
+            <div class="question" data-question="26">
+                <div class="question-number">Question 26</div>
+                <div class="question-text">Q1. A global retailer runs a hybrid cloud architecture: on-prem AD forests (contoso.corp) are synced to Azure AD via Azure AD Connect, and the same identities are used to log in to 3rd-party SaaS POS systems through SAML federation. During a red-team exercise, an attacker who already controls a domain-admin account on-prem creates a backdoor user called “svc_azure” and adds it to the AD sync scope. Within 15 min the account appears in Azure AD, is assigned the Global Administrator role (role was previously empty), and is used to export all 410 k customer credit-card files stored in SharePoint Online.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Enable Azure AD Privileged Identity Management (PIM) and require approval for Global Administrator activation.  </div>
+                    <div class="option" data-answer="B">B. Force password-less sign-in for all Azure AD accounts with FIDO2 tokens.  </div>
+                    <div class="option" data-answer="C">C. Configure Azure AD Connect to filter out all service accounts from synchronization.  </div>
+                    <div class="option" data-answer="D">D. Turn on Azure AD Identity Protection user-risk policies for every sign-in.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    The root failure was the instantaneous, irreversible elevation of a synced on-prem account to Global Administrator. PIM would have converted the role to “eligible” instead of “active,” forcing the attacker to request activation, which can be denied or challenged with MFA/approval workflow. Filtering (C) would not block an attacker who simply changes group membership, and FIDO2 (B) or risk policies (D) still allow the role to be active once the identity is in the cloud.
+                </div>
+            </div>
+
+            <div class="question" data-question="27">
+                <div class="question-number">Question 27</div>
+                <div class="question-text">Q2. A hospital’s EMR system uses OAuth 2.0 to let mobile resident apps retrieve FHIR records. The app is issued a long-lived refresh token (TTL = 90 days) that is bound to the device’s UUID. A physician’s tablet is stolen from a locker and the thief immediately airplane-modes it. The security team wants to ensure that no one can use the refresh token after the theft, but the EMR vendor says revocation lists “are not supported.”  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Issue refresh tokens as opaque, encrypted JWTs and store a SHA-256 hash in a Redis cache; delete the hash to revoke.  </div>
+                    <div class="option" data-answer="B">B. Switch to SAML 2.0 bearer assertions with 1-hour TTL.  </div>
+                    <div class="option" data-answer="C">C. Store the refresh token in hardware-backed keystore on the tablet and require biometric unlock.  </div>
+                    <div class="option" data-answer="D">D. Bind the refresh token to the device’s TPM-based private key and require certificate-based mutual TLS to the token endpoint.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Turning the refresh token into a self-contained encrypted JWT (a “stateless” token) whose validity is determined by the presence of its hash in a fast key-value store allows instant server-side revocation by deleting the hash—no change to the EMR’s OAuth semantics. Option D would prevent replay on another device but does not allow remote revocation once the token is stolen on the legitimate device.
+                </div>
+            </div>
+
+            <div class="question" data-question="28">
+                <div class="question-number">Question 28</div>
+                <div class="question-text">Q7. [Scenario] A U.S. federal agency must comply with FIPS 140-3 and uses PIV smart cards for user authentication. The agency wants to extend the same credential to command-line SSH access on RHEL 8 servers. Which configuration BEST satisfies the requirement while keeping private keys non-exportable?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Copy the PIV private key into ssh-agent  </div>
+                    <div class="option" data-answer="B">B. Use PKCS#11 engine in OpenSSH to call the on-card key via the PIV applet  </div>
+                    <div class="option" data-answer="C">C. Issue a separate SSH key pair and store it in ~/.ssh/id_rsa with 600 permissions  </div>
+                    <div class="option" data-answer="D">D. Convert the PIV certificate to OpenSSH format and place the private key in hardware security module (HSM) attached to each server  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    OpenSSH supports PKCS#11, allowing the SSH client to invoke the private key on the smart card without exporting it. This preserves non-repudiation and FIPS compliance. A exports the key; C abandons PIV; D misplaces the user’s private key on a server-side HSM, which does not help client authentication.
+                </div>
+            </div>
+
+            <div class="question" data-question="29">
+                <div class="question-number">Question 29</div>
+                <div class="question-text">Q9. A mobile-only FinTech startup uses OAuth 2.0 Authorization Code with PKCE to obtain access tokens from its own authorization server. The server supports refresh-token rotation (new refresh token with each access-token request). Pen-testers demonstrated that if an attacker steals a single refresh token he can replay it repeatedly within the 60-second network race window and obtain multiple valid access/refresh-token pairs, defeating rotation.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Reject the old refresh token only after the response is committed to the client, and implement a 5-second reuse grace period tied to the token’s jti claim.  </div>
+                    <div class="option" data-answer="B">B. Stop issuing refresh tokens; force users to re-login every hour.  </div>
+                    <div class="option" data-answer="C">C. Bind each refresh token to the device’s hardware fingerprint in the token’s hash.  </div>
+                    <div class="option" data-answer="D">D. Switch to implicit grant.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    A short grace period (jti replay cache) allows the client to receive the new pair while safely invalidating the old one, closing the concurrency window. Binding (C) mitigates theft but not replay from the same device; hourly login (B) hurts UX; implicit grant (D) is deprecated and removes refresh entirely.
+                </div>
+            </div>
+
+            <div class="question" data-question="30">
+                <div class="question-number">Question 30</div>
+                <div class="question-text">Q2. A hospital wants to let clinicians use their existing NHS smart-cards to single-sign-on to a new cloud-based electronic-patient-record (EPR) system.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. An OAuth 2.0 resource server that performs certificate-to-token exchange  </div>
+                    <div class="option" data-answer="B">B. A FIDO2 certified authenticator that stores the certificate in its TPM  </div>
+                    <div class="option" data-answer="C">C. An OIDC Identity Provider (IdP) that implements X.509 client-cert authentication as an upstream factor  </div>
+                    <div class="option" data-answer="D">D. A SAML 2.0 IdP that issues OIDC assertions via “SAML bearer” grant  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    The clinicians authenticate with X.509 to the OIDC IdP; the IdP then mints an OIDC ID token that the EPR accepts. Option A is half-right but OAuth alone cannot produce an ID token. FIDO2 (B) is a different PKI stack. SAML bearer (D) is for exchanging SAML assertions for OAuth tokens, not for browser SSO to an OIDC RP.
+                </div>
+            </div>
+
+            <div class="question" data-question="31">
+                <div class="question-number">Question 31</div>
+                <div class="question-text">Q3. [Scenario] A cloud-first company enforces identity federation to AWS. The security team wants every privileged API call to be traced back to a single on-premises user, even when the call is made by an assumed-role session via CLI or Terraform. Which AWS feature BEST enforces this requirement without breaking automation?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. AWS SSO with automatic user provisioning and 1-hour role sessions  </div>
+                    <div class="option" data-answer="B">B. SAML assertion-based role assumption with SourceIdentity explicitly set in the role trust policy  </div>
+                    <div class="option" data-answer="C">C. Cross-account role chaining with external ID and rotating secrets  </div>
+                    <div class="option" data-answer="D">D. AWS Identity Center storing long-lived access keys in AWS Secrets Manager  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    By setting the sts:SourceIdentity attribute (introduced 2021) in the SAML assertion and enforcing its presence in the role trust policy, AWS CloudTrail logs every privileged call under the human identity that originated the chain, even through role assumption and automation. AWS SSO (A) does not automatically propagate the human identity into assumed-role logs; C provides accountability only to the last role, not the human; D violates the principle of no long-lived credentials.
+                </div>
+            </div>
+
+            <div class="question" data-question="32">
+                <div class="question-number">Question 32</div>
+                <div class="question-text">Q3. A financial-startup’s mobile app uses OAuth 2.0 authorization-code flow with PKCE to access an API. The security team discovers that some users authenticate once and then lend their device to friends, allowing unauthorized transactions. Which control, when added to the architecture, MOST directly addresses the “lending” problem without degrading the single-sign-on experience for the legitimate owner?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Require fresh SAML assertion every five minutes.  </div>
+                    <div class="option" data-answer="B">B. Bind the refresh token to the device’s hardware key attested at enrollment.  </div>
+                    <div class="option" data-answer="C">C. Increase the length of the authorization-code from 30 bytes to 64 bytes.  </div>
+                    <div class="option" data-answer="D">D. Force step-up MFA for transactions > $100.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Device-binding of the refresh token ties the OAuth grant to a single, un-exportable hardware key (e.g., Android Keystore or iOS Secure Enclave). Friends borrowing the device cannot export or replay the token on another device, stopping collateral use while preserving silent SSO for the owner. SAML (A) is irrelevant in an OAuth PKCE world. Longer authorization codes (C) do nothing once the code is exchanged. Step-up MFA (D) helps for high-value transactions but still allows low-value abuse and adds friction.
+                </div>
+            </div>
+
+            <div class="question" data-question="33">
+                <div class="question-number">Question 33</div>
+                <div class="question-text">Q3. A hospital is adopting a new on-call physician scheduling application. Physicians rotate every 12 hours and must be able to assume emergency privileges instantly when they arrive on the floor. The CISO has mandated that emergency access still requires two-person integrity and full auditability. Which control pair best satisfies both clinical urgency and the CISO’s mandate?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Issue each physician a smartcard plus PIN; the card is pre-provisioned with all possible emergency roles.  </div>
+                    <div class="option" data-answer="B">B. Maintain a pool of “break-glass” accounts whose passwords are sealed in tamper-evident envelopes stored in a safe that requires two nurses to open.  </div>
+                    <div class="option" data-answer="C">C. Allow senior physicians to use the “override” button inside the app, which instantly grants full admin rights and logs the action.  </div>
+                    <div class="option" data-answer="D">D. Use RBAC with dynamic role activation that requires an attending physician already on duty to sponsor the newcomer via a digital signature.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Break-glass envelopes stored under dual-control provide two-person integrity, immediate availability, and an auditable paper trail (who broke the seal, when). Pre-provisioned smartcards (A) violate least-functionality because they carry all roles regardless of current need. Override buttons (C) lack two-person control and create excessive privilege. Sponsor-based RBAC (D) is too slow for true emergencies and may fail if no sponsor is reachable.
+                </div>
+            </div>
+
+            <div class="question" data-question="34">
+                <div class="question-number">Question 34</div>
+                <div class="question-text">Q2. A hospital is implementing biometric authentication for its electronic-prescription system. FDA regulations require a “significant level of identity assurance,” while HIPAA demands that protected health information be safeguarded against unauthorized access. The hospital’s workforce includes temporary nurses who may work only one 12-hour shift. Which combination of biometric modality and life-cycle process best balances security, compliance, and usability?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Vein-pattern recognition with template encryption stored on a central server; re-enroll every temporary nurse at the start of each shift.  </div>
+                    <div class="option" data-answer="B">B. Fingerprint with on-device match (secure element); templates created once and reused for any returning temporary nurse.  </div>
+                    <div class="option" data-answer="C">C. Iris scan with match-off-card; templates stored on a national cloud service shared with other hospitals for efficiency.  </div>
+                    <div class="option" data-answer="D">D. Voiceprint with liveness detection; templates stored encrypted in Active Directory; no re-enrollment required.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Vein pattern is privacy-friendly (does not leave latent prints), has low false-accept rates, and central encryption allows revocation when a temp leaves. Re-enrolling each shift guarantees that a terminated temp cannot authenticate later with leftover credentials, satisfying both FDA assurance and HIPAA minimum-necessary principles. On-device match (B) complicates revocation across thousands of shared workstations. Cloud iris (C) violates HIPAA data-residency and third-party disclosure rules. Voiceprint (D) is too susceptible to environmental noise in hospitals and still requires a directory copy that may outlive employment.
+                </div>
+            </div>
+
+            <div class="question" data-question="35">
+                <div class="question-number">Question 35</div>
+                <div class="question-text">Q2. A SaaS provider wants to offer customers three different authentication choices: (1) corporate Azure AD credentials, (2) Google personal accounts, and (3) passwords local to the SaaS. Management demands a single “log-in” button that transparently routes each user to the correct method. Which architecture satisfies the requirement while preserving the lowest internal credential management overhead?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Build a custom identity provider that proxies to Azure AD, Google, and the local user store.  </div>
+                    <div class="option" data-answer="B">B. Deploy a SAML identity broker that consumes inbound SAML from Azure AD and Google while still maintaining a local SAML IdP for legacy accounts.  </div>
+                    <div class="option" data-answer="C">C. Implement the SaaS as a SAML SP and an OpenID Connect RP, then use an Identity Hub that supports Home Realm Discovery to select the upstream IdP.  </div>
+                    <div class="option" data-answer="D">D. Force all users to create local passwords and then offer social “linking” so they can optionally use Azure AD or Google.  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    An Identity Hub (or “federation proxy”) that speaks both SAML and OIDC can perform Home Realm Discovery (HRD) based on email domain or user choice, routing each user to the correct upstream IdP while the SaaS only needs to trust the hub’s single token. Option A forces the SaaS to build and maintain a full IdP. Option B still requires three separate SAML endpoints and does not natively handle Google’s OIDC. Option D defeats the “no internal passwords” goal for Azure AD and Google users.
+                </div>
+            </div>
+
+            <div class="question" data-question="36">
+                <div class="question-number">Question 36</div>
+                <div class="question-text">Q1. A multinational bank is implementing a federated identity system so that corporate customers can initiate wire transfers from either the bank’s own web portal or from within their ERP system without re-authenticating. The security architect must ensure that the SAML 2.0 assertion that is passed from the ERP (IdP) to the bank’s payment hub (SP) cannot be replayed by an attacker who captures it on the wire. Which SAML construct or control best meets this requirement?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Encrypt the entire SAML response with the SP’s public key so only the SP can read it.  </div>
+                    <div class="option" data-answer="B">B. Place a NotOnOrAfter timestamp inside the <Conditions> element and require SP verification.  </div>
+                    <div class="option" data-answer="C">C. Sign the SAML assertion with the IdP’s private key so the SP can verify origin authenticity.  </div>
+                    <div class="option" data-answer="D">D. Include the IdP’s X.509 certificate inside the assertion so the SP can trust the public key.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Timestamps in the <Conditions> element (NotBefore / NotOnOrAfter) create a short validity window that makes replay attacks impractical even if the assertion is intercepted. Encryption (A) provides confidentiality but not anti-replay. Signing (C) proves integrity and source authenticity but does not stop replay by itself. Including the certificate (D) is necessary for signature validation but again does not prevent replay.
+                </div>
+            </div>
+
+            <div class="question" data-question="37">
+                <div class="question-number">Question 37</div>
+                <div class="question-text">Q9. A zero-trust project requires that every API call between microservices carry a short-lived OAuth 2.0 access token that is bound to the mTLS certificate presented by the caller. Which token endpoint parameter or extension MUST the client include when requesting the access token so that the authorization server can embed the certificate hash?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. cnf claim with a jwk thumbprint in a JWT client assertion  </div>
+                    <div class="option" data-answer="B">B. tls_client_cert_boundary in the token request body  </div>
+                    <div class="option" data-answer="C">C. client_id bound to the certificate’s Subject CN  </div>
+                    <div class="option" data-answer="D">D. MTLS endpoint alias and the confirmation key “x5t#S256”  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    RFC 8705 (OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens) defines the “x5t#S256” confirmation key placed inside the token by the authorization server after validating the client’s mTLS connection. The client simply connects to the mTLS-enabled token endpoint; no extra parameter is needed in the POST body. The cnf/jwk is for sender-constrained JWTs, not certificate-bound tokens.
+                </div>
+            </div>
+
+            <div class="question" data-question="38">
+                <div class="question-number">Question 38</div>
+                <div class="question-text">Q10. [Scenario] A company implements a new RBAC/ABAC hybrid model in which roles are assigned to users, but roles are activated only when environmental attributes (time, location, threat intel) are satisfied. Administrators notice that users who travel internationally sometimes cannot activate any role even though their user record is unchanged. Which concept is PRIMARILY responsible for the denial?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Role explosion  </div>
+                    <div class="option" data-answer="B">B. Dynamic role activation (context-aware authorization)  </div>
+                    <div class="option" data-answer="C">C. Static separation of duties  </div>
+                    <div class="option" data-answer="D">D. Permission inheritance from parent roles  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    The system is enforcing context constraints (location, threat intel) before activating roles. This is dynamic role activation, a form of context-aware authorization. Role explosion (A) is about too many roles; static SOD (C) is about mutually exclusive roles regardless of context; permission inheritance (D) does not explain location-based denial.
+                </div>
+            </div>
+
+            <div class="question" data-question="39">
+                <div class="question-number">Question 39</div>
+                <div class="question-text">Q4. [Scenario] A hospital runs an on-premises electronic health-record (EHR) system that still relies on LDAP bind for authentication. Clinicians now also use a cloud-based tele-medicine portal that supports only OpenID Connect. Single sign-on is required so that doctors are not prompted to re-authenticate when they click from the EHR into the portal. The hospital cannot modify the EHR code. Which architecture is MOST appropriate?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Deploy an LDAP-to-SAML IdP proxy that consumes the LDAP bind, issues a SAML assertion, and then use a SAML-to-OIDC gateway in front of the portal  </div>
+                    <div class="option" data-answer="B">B. Replace the LDAP directory with a cloud AD and synchronise passwords nightly  </div>
+                    <div class="option" data-answer="C">C. Issue smart cards to clinicians and require both LDAP and TLS client-auth  </div>
+                    <div class="option" data-answer="D">D. Mirror the LDAP database into the cloud portal and let the portal perform LDAP binds  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    An IdP proxy (e.g., Shibboleth, SimpleSAMLphp) can front-end the existing LDAP directory, convert the successful bind into a SAML assertion, and then a second gateway (or the same proxy) can translate that SAML assertion into an OIDC token for the portal. This preserves the investment in LDAP, requires no code changes to the EHR, and achieves SSO. B introduces password sync latency and security issues; C does not solve the protocol mismatch; D duplicates sensitive credentials and violates least privilege.
+                </div>
+            </div>
+
+            <div class="question" data-question="40">
+                <div class="question-number">Question 40</div>
+                <div class="question-text">Q3. A multinational bank is rolling out privileged-access-management (PAM) for its 300 Unix engineers.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Vault the root password in a PAM appliance, require engineers to check it out, and rotate after each use  </div>
+                    <div class="option" data-answer="B">B. Disable root entirely, map engineers to individual sudo roles, and forward sudo logs to a tamper-proof SIEM  </div>
+                    <div class="option" data-answer="C">C. Deploy a PAM bastion host that issues short-lived SSH certificates signed by the PAM CA; engineers SSH to the target as root via these certificates while the PAM records the session  </div>
+                    <div class="option" data-answer="D">D. Enable SELinux in enforcing mode and configure it to block any UID-0 process spawned outside of /bin/su  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    Short-lived SSH certificates remove the need for a persistent root password while the PAM appliance retains full session recording. Option A still exposes the password. Option B does not solve for engineers who need actual root shells. Option D blocks exploits but does not grant audited root access.
+                </div>
+            </div>
+
+            <div class="question" data-question="41">
+                <div class="question-number">Question 41</div>
+                <div class="question-text">Q7. A start-up stores customer selfies for facial recognition.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Encrypt the selfies with AES-256 and store the key in an HSM  </div>
+                    <div class="option" data-answer="B">B. Store only the biometric template (feature vector) produced by a one-way transformation keyed with a secret salt  </div>
+                    <div class="option" data-answer="C">C. Tokenise the selfie file name and store the mapping in a separate database  </div>
+                    <div class="option" data-answer="D">D. Use homomorphic encryption so matching can occur on ciphertext  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    A salted, one-way transformation of the raw image into a feature vector irreversibly removes the ability to reconstruct the original face, yet the vector can still be used for comparison. AES (A) is reversible if the key is compromised. Tokenisation (C) does not change the biometric data itself. Homomorphic encryption (D) is still largely experimental and slow for 1:N.
+                </div>
+            </div>
+
+            <div class="question" data-question="42">
+                <div class="question-number">Question 42</div>
+                <div class="question-text">Q4. A defense contractor runs a high-side classified network that is air-gapped from the corporate LAN. Employees must badge in with a Common Access Card (CAC), type a PIN, and then pass a keystroke-dynamics check before the workstation unlocks. An audit notes that the keystroke-baseline database is stored on the same disconnected server that hosts the log-collection service, creating a potential single point of compromise. Which compensating control BEST preserves the integrity of the biometric reference data while maintaining availability?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Write once, read many (WORM) storage for the baseline file; replicate hashes to an HSM on a separate management VLAN.  </div>
+                    <div class="option" data-answer="B">B. Encrypt the baseline file with the user’s public key; store private key on the user’s CAC.  </div>
+                    <div class="option" data-answer="C">C. Implement a threshold scheme: split the baseline into three shares, require two of three administrators to reconstruct for any update.  </div>
+                    <div class="option" data-answer="D">D. Move the baseline database to the corporate LAN and pull it across a one-way transfer diode when needed.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    WORM guarantees that the reference template cannot be altered once written, while an HSM-backed hash provides tamper detection without exposing the biometric data itself. Keeping the HSM on a separate management VLAN ensures that even if the log server is compromised, the integrity check remains trustworthy. Encrypting with the user’s public key (B) prevents disclosure but not insider tampering. Threshold scheme (C) adds complexity but does not stop an attacker who compromises one share-holder and the log server. Moving data to the corporate LAN (D) violates air-gap policy.
+                </div>
+            </div>
+
+            <div class="question" data-question="43">
+                <div class="question-number">Question 43</div>
+                <div class="question-text">Q8. A retailer operates kiosks in 500 stores. Each kiosk is used by any employee who clocks in, and turnover is high (average tenure 4 months). The CISO wants to eliminate passwords on the kiosk while still tying every transaction to an individual identity. Which combination of controls achieves both goals with the lowest operational overhead?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Issue reusable RFID badges with 4-digit PIN; map badge UID to employee ID in a central directory.  </div>
+                    <div class="option" data-answer="B">B. Deploy Windows Hello for Business with facial recognition and cloud-based template storage.  </div>
+                    <div class="option" data-answer="C">C. Enroll every new employee’s fingerprint on every kiosk using a central biometric template DB.  </div>
+                    <div class="option" data-answer="D">D. Place a QR code on each kiosk; employees scan it with their personal phone which then opens a VPN tunnel and sends the phone’s hardware MAC address as identity.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    RFID + PIN is fast, survives high turnover (only badge and PIN resets), and keeps the kiosk free of passwords. Facial recognition (B) is costly, needs camera hardware, and raises privacy/consent issues. Central fingerprint DB (C) requires enrollment at every kiosk and creates PII liability. QR-to-phone (D) introduces BYOD risk and VPN overhead, and MAC addresses are easily spoofed.
+                </div>
+            </div>
+
+            <div class="question" data-question="44">
+                <div class="question-number">Question 44</div>
+                <div class="question-text">Q4. A SaaS provider offers a multi-tenant HR platform.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. The <AuthnContext> element in the IdP-initiated SSO profile  </div>
+                    <div class="option" data-answer="B">B. The <AttributeStatement> element in the SP-initiated SSO profile  </div>
+                    <div class="option" data-answer="C">C. The <AudienceRestriction> element in the IdP-initiated SLO profile  </div>
+                    <div class="option" data-answer="D">D. The <EncryptedID> element in the SP-initiated SLO profile  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    <AttributeStatement> contains name, email, department, etc. that the SP uses to provision the account. SP-initiated profile is the usual route for JIT because the SP can also create a local session after receiving the assertion. AuthnContext (A) only conveys assurance level. SLO profiles (C, D) are for logout, not provisioning.
+                </div>
+            </div>
+
+            <div class="question" data-question="45">
+                <div class="question-number">Question 45</div>
+                <div class="question-text">Q4. A multi-national bank operates its own PKI. A new regulation requires that private keys for TLS server certificates be stored in FIPS 140-2 Level 3 hardware and that no individual operator can generate, approve, and install a certificate alone.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. HSM with m-of-n smart-card split-knowledge for the HSM’s authentication key plus certificate-template approval workflows in the CA.  </div>
+                    <div class="option" data-answer="B">B. Store keys in software and require two-person approval in the ITSM ticket before the Linux admin runs openssl req.  </div>
+                    <div class="option" data-answer="C">C. Use a cloud KMS and enable IAM policy requiring two service-account roles to sign a CSR.  </div>
+                    <div class="option" data-answer="D">D. Implement ACME protocol with DNS-01 challenge and require two DNS admins to approve the TXT record.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Only an on-prem HSM (or cloud HSM) provides FIPS 140-2 Level 3 key storage; m-of-n split-knowledge enforces dual control for key usage, while CA workflow enforces separation of duties for certificate issuance. Software keys (B) fail Level 3, cloud KMS (C) is usually Level 2, and ACME (D) does not govern key generation.
+                </div>
+            </div>
+
+            <div class="question" data-question="46">
+                <div class="question-number">Question 46</div>
+                <div class="question-text">Q5. A SaaS vendor supports SCIM 2.0 for automatic user provisioning. Your IAM team wants newly hired employees to gain access the morning of their start-date and terminated employees to lose access within 15 min of HR’s record change. The HR system can make REST calls but cannot issue signed SCIM events.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. HR publishes an event to an MQ queue; an Azure Logic App consumes the queue and calls the SaaS SCIM endpoint.  </div>
+                    <div class="option" data-answer="B">B. Schedule the SaaS to pull a CSV dump from HR every night.  </div>
+                    <div class="option" data-answer="C">C. Ask HR to email a spreadsheet to the IAM team each morning.  </div>
+                    <div class="option" data-answer="D">D. Configure the SaaS to poll AD every 5 min and parse employeeType.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Near-real-time message queue + low-code connector (Logic App) allows HR’s event to trigger SCIM “POST /Users” or “PATCH /Users (active=false)” within seconds, meeting the 15-min SLA. Nightly batch (B) or email (C) misses the window, and AD polling (D) does not reflect HR’s authoritative status.
+                </div>
+            </div>
+
+            <div class="question" data-question="47">
+                <div class="question-number">Question 47</div>
+                <div class="question-text">Q5. [Scenario] A company implements attribute-based access control (ABAC) for its data lake. Objects are tagged with “DataClassification=Secret”, “Project=Phoenix”, and “Country=DE”. An employee presents these attributes at access time: Clearance=Secret, Project=Phoenix, Country=US. Which security principle MOST directly prevents the employee from accessing the object?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Discretionary access control (DAC)  </div>
+                    <div class="option" data-answer="B">B. Dynamic segregation of duties  </div>
+                    <div class="option" data-answer="C">C. The principle of “deny unless all relevant attributes match” (strict ABAC)  </div>
+                    <div class="option" data-answer="D">D. Transitive trust through federation  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    ABAC engines evaluate a policy such as “grant if Subject.Country == Object.Country AND …”. Because Country=US does not equal Country=DE, the rule engine denies. This is the essence of strict ABAC, not DAC (A), which relies on owner discretion, nor SOD (B), which is about conflicting roles, nor transitive trust (D).
+                </div>
+            </div>
+
+            <div class="question" data-question="48">
+                <div class="question-number">Question 48</div>
+                <div class="question-text">Q5. An organization’s Azure AD tenant is configured with Password Hash Sync (PHS) and Seamless SSO. A penetration tester obtains a copy of the on-premise AD database (ntds.dit) and cracks 30% of passwords overnight. Which Azure AD feature, if enabled, would have rendered those cracked hashes useless for authenticating to any cloud workload?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Conditional Access policies that require compliant devices.  </div>
+                    <div class="option" data-answer="B">B. Azure AD Multi-Factor Authentication (MFA) for all users.  </div>
+                    <div class="option" data-answer="C">C. Pass-Through Authentication (PTA) instead of PHS.  </div>
+                    <div class="option" data-answer="D">D. Self-Service Password Reset (SSPR) in “reset only” mode.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    With MFA enforced, knowledge of the password alone (from cracked hashes) is insufficient to complete authentication. Conditional Access (A) still allows password as a primary factor. PTA (C) changes the transport but still accepts the same password. SSPR (D) is unrelated to authentication strength.
+                </div>
+            </div>
+
+            <div class="question" data-question="49">
+                <div class="question-number">Question 49</div>
+                <div class="question-text">Q7. A SaaS company has 50,000 paying customers. Each customer can invite internal employees to use the SaaS. The product team wants to avoid storing any employee passwords and instead “log in with your company credentials.” The Identity Engineer must pick a protocol that minimizes customer setup (no whitelist of IP addresses, no shared secrets) and works for customers that use Okta, AD FS, or Google Workspace. Which technology best fits?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. SAML 2.0 with SP-initiated POST binding and automatic IdP discovery via email domain.  </div>
+                    <div class="option" data-answer="B">B. OAuth 2.0 Resource-Owner Password Credentials (ROPC) with customer-supplied client secrets.  </div>
+                    <div class="option" data-answer="C">C. LDAPS over the Internet tunneled through mutual TLS.  </div>
+                    <div class="option" data-answer="D">D. RADIUS with Microsoft NPS and customer-specific shared secrets.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    SAML with SP-initiated flow and email-domain-driven IdP discovery allows each customer to keep using its existing IdP (Okta, AD FS, Google) without exposing passwords to the SaaS and without pre-shared secrets. ROPC (B) requires the SaaS to handle passwords, violating the goal. LDAPS (C) and RADIUS (D) both need network-level trust and shared secrets, which the scenario forbids.
+                </div>
+            </div>
+
+            <div class="question" data-question="50">
+                <div class="question-number">Question 50</div>
+                <div class="question-text">Q5. A company uses an on-prem LDAP directory for internal staff and Azure AD B2C for external customers.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Front-channel logout with prompt=select_account  </div>
+                    <div class="option" data-answer="B">B. Multiple IdPs configured in B2C custom policies, home-realm-discovery via domain hint  </div>
+                    <div class="option" data-answer="C">C. Resource-owner password credentials (ROPC) flow split by audience  </div>
+                    <div class="option" data-answer="D">D. Implicit flow with response_mode=fragment and separate redirect URIs  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    B2C custom policies can federate to the on-prem LDAP via SAML and also to social IdPs. Domain hint (e.g., login_hint=john@corp.com) triggers home-realm discovery so internal users are redirected to the LDAP IdP while external users stay on the B2C login page. ROPC (C) is deprecated and disables SSO. Implicit flow (D) does not solve realm discovery.
+                </div>
+            </div>
+
+            <div class="question" data-question="51">
+                <div class="question-number">Question 51</div>
+                <div class="question-text">Q1. A multinational bank is rolling out a new mobile-banking app that will be used by retail customers in 28 countries. Regulatory requirements in 7 of those countries forbid the use of any biometric data that can be used by law-enforcement agencies for national-scale identification (e.g., fingerprints, facial images). The IAM architect must still provide low-friction, strong authentication for high-value transactions. Which control BEST satisfies the conflicting goals?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. FIDO2 UAF with on-device biometric capture and local template storage  </div>
+                    <div class="option" data-answer="B">B. Push-based, out-of-band OTP to the registered mobile device plus transaction signing  </div>
+                    <div class="option" data-answer="C">C. SAML 2.0 federation to each country’s national eID scheme  </div>
+                    <div class="option" data-answer="D">D. Centralised voice-print verification in the bank’s cloud with GDPR pseudonymisation  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Push-based out-of-band OTP plus transaction signing (e.g., signing a hash of the transaction details) achieves strong, possession-based authentication and non-repudiation without storing or transmitting biometric data that could be mis-used for national ID. Option A still uses biometrics that could be exported; C relies on national schemes that may use prohibited biometrics; D keeps the biometric in the cloud, violating the “no biometrics usable by law-enforcement” rule.
+                </div>
+            </div>
+
+            <div class="question" data-question="52">
+                <div class="question-number">Question 52</div>
+                <div class="question-text">Q1. A global SaaS provider has decided to sunset its legacy on-prem LDAP directory and move to a cloud-native identity stack. The firm operates 24 × 7, has 18 000 employees in 42 countries, and maintains 240 separate “customer tenant” environments in addition to its corporate tenant. Management wants every user (employee or customer) to have a single enterprise identity that can be used for both internal corporate apps and any of the customer tenants, yet each customer tenant must continue to appear as a completely isolated, branded experience. Federation partnerships already exist with the two largest customers (each using their own IdP), and those must be preserved.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Stand up a new Greenfield AD forest in Azure IaaS, create a one-way transitive forest trust to the legacy LDAP directory, and use AD FS to issue claims to customer tenants.  </div>
+                    <div class="option" data-answer="B">B. Deploy a multi-tenant SaaS IdP that supports SAML 2.0, OAuth 2.0, and OpenID Connect; migrate identities into it; give each customer a dedicated “realm” that is logically isolated but shares the same physical directory; use SAML or OIDC to federate both internal apps and external customer IdPs.  </div>
+                    <div class="option" data-answer="C">C. Keep the legacy LDAP as the identity provider, front-end it with a custom REST gateway that translates SCIM into LDAP calls, and replicate the entire directory into each customer tenant every night.  </div>
+                    <div class="option" data-answer="D">D. Issue each user a cryptographically signed JSON identity token that contains every customer-tenant role; require each customer tenant to validate the token locally so that no federation is required.</div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Option B is the only design that simultaneously satisfies the “single enterprise identity” requirement, preserves logical isolation between tenants, supports existing federation agreements, and avoids the operational overhead of maintaining legacy LDAP infrastructure. A cloud-native, multi-tenant IdP uses a shared physical directory but enforces tenant isolation through realm/organization constructs, thereby reducing data duplication and attack surface. AD FS (A) perpetuates on-prem dependencies and transitive trusts, increasing complexity and risk. Option C creates massive data sprawl and offers no runtime federation, while D pushes authorization data into an immutable token, making role revocation slow and insecure.
+                </div>
+            </div>
+
+            <div class="question" data-question="53">
+                <div class="question-number">Question 53</div>
+                <div class="question-text">Q9. A manufacturer uses RFID badges for physical access. An attacker is caught cloning badges by walking behind employees and sniffing the UID. The security team wants to add cryptographic authentication without replacing the entire badge stock. Which upgrade path BEST preserves the existing reader infrastructure while defeating cloning?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Issue new badges that support MIFARE DESFire EV3; configure readers to challenge the badge’s symmetric key; store master key in an HSM.  </div>
+                    <div class="option" data-answer="B">B. Add a second factor: require employees to type a PIN into the reader keypad.  </div>
+                    <div class="option" data-answer="C">C. Replace readers with Bluetooth Low Energy (BLE) and use smartphone-based tokens.  </div>
+                    <div class="option" data-answer="D">D. Install turnstile cameras and perform facial recognition after each badge swipe.  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    DESFire EV3 operates at 13.56 MHz and is backward-compatible with most existing prox reader wiring; by simply updating firmware and adding a key diversification scheme, the reader can perform a challenge-response that proves the badge holds a secret, not just a UID. Cloned UIDs without the key will fail. Adding a PIN (B) helps but does not bind the badge to the user and is subject to tailgating. BLE (C) and facial recognition (D) are forklift upgrades that scrap the existing badge investment.
+                </div>
+            </div>
+
+            <div class="question" data-question="54">
+                <div class="question-number">Question 54</div>
+                <div class="question-text">Q3. A company is deploying an on-prem Kubernetes cluster that must use the same enterprise credentials already stored in an LDAP directory. Management insists that no passwords should transit the cluster’s control plane and that user-level RBAC decisions must be enforced at the API server.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Deploy an LDAP connector in each worker node’s PAM stack and mount /etc/passwd into API server pods.  </div>
+                    <div class="option" data-answer="B">B. Enable Kubernetes built-in OpenID Connect token plugin and configure an on-prem OpenID Provider that fronts LDAP with PKCE flow.  </div>
+                    <div class="option" data-answer="C">C. Run kubeadm with basic-auth file synchronized hourly from LDAP.  </div>
+                    <div class="option" data-answer="D">D. Deploy a Kerberized nginx ingress controller that issues SPNEGO tokens to kubectl.  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    OpenID Connect with PKCE allows password-less, short-lived ID tokens signed by the internal OIDC provider (e.g., Dex or Keycloak) while the provider itself binds to LDAP for verification. The API server natively maps ID-token claims to Kubernetes RBAC, satisfying “no passwords in cluster” and fine-grained access control. Basic-auth (C) and PAM (A) expose passwords; SPNEGO (D) is browser-oriented and does not integrate with kubectl’s token flow.
+                </div>
+            </div>
+
+            <div class="question" data-question="55">
+                <div class="question-number">Question 55</div>
+                <div class="question-text">Q2. A hospital network is implementing a new electronic prescription system that is regulated under HIPAA and PCI-DSS because it also processes co-payments. Clinicians must authenticate with something they have (a smart-card) plus something they know (a 6-digit PIN). The hospital wants to add a biometric factor (fingerprint) so that a stolen card + PIN alone cannot be used by an attacker. However, the CIO is concerned that storing biometric templates in the central identity repository could create compliance exposure if the database is ever breached.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Store fingerprint minutiae templates in the same encrypted database table that already stores PIN hashes; require the clinician to present all three factors for every single prescription event.  </div>
+                    <div class="option" data-answer="B">B. Use the card’s secure element to perform on-device fingerprint matching; release a FIDO2 attestation signed by the card’s private key to the IdP; the IdP continues to verify only the smart-card + PIN.  </div>
+                    <div class="option" data-answer="C">C. Deploy a separate biometric identity provider that issues an X.509 attribute certificate containing a “biometric-verified” attribute; merge the attribute into the clinician’s session token after successful fingerprint match.  </div>
+                    <div class="option" data-answer="D">D. Store only salted hash values of the fingerprint images in the central directory; re-collect the fingerprint on every login and compare the hash to the stored value.</div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Option B keeps the biometric template inside the tamper-resistant secure element of the smart-card, eliminating the need to store or synchronize biometric data in a central repository. This design sharply reduces the breach-impact surface and satisfies HIPAA/PCI-DSS data-minimization principles. The FIDO2 attestation proves to the IdP that the biometric check succeeded, allowing the system to treat the transaction as a genuine multi-factor event without ever exporting raw or template biometric data. Option A centralizes biometric data, creating a high-value target. Option C still requires sharing biometric attributes across systems and increases integration complexity. Option D is technically flawed because cryptographic hashes are sensitive to minute variations in fingerprint scans, yielding unacceptable false-reject rates.
+                </div>
+            </div>
+
+            <div class="question" data-question="56">
+                <div class="question-number">Question 56</div>
+                <div class="question-text">Q8. [Scenario] A company runs a micro-services mesh on Kubernetes. Each pod needs to call AWS KMS to decrypt configuration secrets at start-up. The security team wants to avoid storing AWS credentials in pod images or environment variables. Which AWS IAM mechanism BEST provides each pod with the least-privilege role?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Attach the same IAM user credentials encrypted in a Kubernetes Secret mounted as a volume  </div>
+                    <div class="option" data-answer="B">B. Create a single AWS IAM role for all worker nodes and let every pod inherit it  </div>
+                    <div class="option" data-answer="C">C. Enable IRSA (IAM Roles for Service Accounts) and map each Kubernetes service account to a unique IAM role with trust policy scoped to the pod’s namespace/service-account  </div>
+                    <div class="option" data-answer="D">D. Run kube2iam as a DaemonSet and rely on iptables to intercept metadata calls  </div>
+                </div>
+                <div class="explanation" data-correct="C">
+                    <strong>Correct Answer: C</strong><br><br>
+                    IRSA is the AWS-native, officially supported way to federate Kubernetes service accounts to IAM roles using OIDC. Each pod assumes its own role, achieving least privilege without shared node-role credentials or third-party daemons. A resurrects long-lived keys; B violates least privilege; D is legacy and introduces iptables manipulation risk.
+                </div>
+            </div>
+
+            <div class="question" data-question="57">
+                <div class="question-number">Question 57</div>
+                <div class="question-text">Q6. A company is rolling out a Bring-Your-Own-Device (BYOD) program. Policy states that only devices with a corporate MDM-issued certificate may access Exchange Online. However, users also need to read email from native iOS Mail without installing the Outlook app. Which Azure AD control ENFORCES the certificate requirement at the moment of authentication?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Conditional Access policy requiring a compliant device AND a domain-joined state  </div>
+                    <div class="option" data-answer="B">B. Conditional Access policy requiring an approved client app  </div>
+                    <div class="option" data-answer="C">C. Conditional Access policy requiring multi-factor authentication (MFA)  </div>
+                    <div class="option" data-answer="D">D. Conditional Access policy requiring a trusted certificate multi-factor authentication method  </div>
+                </div>
+                <div class="explanation" data-correct="D">
+                    <strong>Correct Answer: D</strong><br><br>
+                    Azure AD supports certificate-based authentication (CBA) as a first-factor or multi-factor method. By marking the MDM CA as a trusted issuer and creating a Conditional Access rule that requires “multi-factor” with CBA, the native iOS Mail client must present the MDM certificate or it is blocked. Compliant-device rules rely on device-state signals, not the certificate itself, and approved-client rules would force Outlook.
+                </div>
+            </div>
+
+            <div class="question" data-question="58">
+                <div class="question-number">Question 58</div>
+                <div class="question-text">Q9. A university’s computer-science department operates an OpenStack private cloud.  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Keystone federated tokens with SAML assertions and Heat autoscaling  </div>
+                    <div class="option" data-answer="B">B. Keystone SCIM feed, OpenStack Aodh (alarming) listening to CADF events, and Nova policy-based shutdown  </div>
+                    <div class="option" data-answer="C">C. LDAP shadow groups and Celery periodic tasks polling the LDAP server  </div>
+                    <div class="option" data-answer="D">D. OAuth 2.0 refresh tokens and Barbican secret rotation  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    Keystone emits a CADF event when the federated SAML assertion expires or the SCIM feed disables the user. Aodh can trigger a workflow that calls Nova to stop the user’s instances. SCIM provides near-real-time provisioning state, meeting the five-minute SLA. Heat (A) is for orchestration, not identity revocation. Celery (C) introduces polling latency. Barbican (D) handles secrets, not compute lifecycle.
+                </div>
+            </div>
+
+            <div class="question" data-question="59">
+                <div class="question-number">Question 59</div>
+                <div class="question-text">Q1. A multinational bank is subject to PSD2’s Strong Customer Authentication (SCA) requirement and must allow third-party providers (TPPs) to access customer-payment accounts via APIs. The security team wants to issue a single cryptographic credential to each TPP that can be reused for every customer account without exposing the bank’s internal directory service. Which IAM construct BEST satisfies the requirement while preserving scalability?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. SAML 2.0 bearer assertions signed by the bank’s IdP  </div>
+                    <div class="option" data-answer="B">B. OAuth 2.0 mutual-TLS client certificates bound to the TPP’s software statement  </div>
+                    <div class="option" data-answer="C">C. Kerberos constrained delegation with service tickets  </div>
+                    <div class="option" data-answer="D">D. XACML 3.0 policies pushed to each API endpoint  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    OAuth 2.0 with mutual-TLS (RFC 8705) binds a client certificate to the client_id issued to the TPP. The bank’s authorization server issues access tokens that are scoped to the TPP’s regulated role, eliminating the need for customer passwords or directory lookups and meeting PSD2’s SCA requirement. SAML would force the bank to become an IdP for every TPP, Kerberos cannot scale across organizational boundaries, and XACML is for fine-grained policy evaluation, not credential issuance.
+                </div>
+            </div>
+
+            <div class="question" data-question="60">
+                <div class="question-number">Question 60</div>
+                <div class="question-text">Q10. A manufacturing plant uses legacy badge readers that only support 125 kHz prox cards. Corporate security wants to add a second factor at the turnstile without replacing the existing readers. Budget allows only for a software upgrade to the access-control server and the issuance of mobile credentials. Which architecture BEST satisfies two-factor authentication while keeping the prox card as the first factor?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Issue Bluetooth Low Energy (BLE) mobile badges and require users to unlock the phone with biometrics before the badge is transmitted  </div>
+                    <div class="option" data-answer="B">B. Install a separate NFC reader at each turnstile and require users to tap their phone after presenting the prox card  </div>
+                    <div class="option" data-answer="C">C. Send an SMS OTP to the user’s registered phone after the prox card is read; require the user to type it into a keypad  </div>
+                    <div class="option" data-answer="D">D. Upgrade to DESFire EV3 cards and require a PIN entry on the reader  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    BLE badges can be configured to transmit a rotating credential only while the phone is in an unlocked state (biometric or PIN), creating a possession (prox card) + inherence/knowledge (phone unlock) model without new hardware. Adding NFC readers violates the “no new reader” constraint, SMS OTP introduces usability issues at a turnstile, and DESFire EV3 cards require 13.56 MHz readers, which are incompatible with 125 kHz prox infrastructure.
+                </div>
+            </div>
+
+            <div class="question" data-question="61">
+                <div class="question-number">Question 61</div>
+                <div class="question-text">Q8. A cloud-native application uses AWS Cognito user pools for customer identity. The marketing team wants to integrate a third-party analytics SaaS that requires a nightly export of user traits (age, city, last-login) but must NOT receive any credential material. The export must be cryptographically traceable to Cognito. Which approach BEST satisfies these constraints?  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. Enable Cognito Streams to Kinesis Data Firehose, transform with Lambda, and deliver encrypted Parquet to an S3 bucket signed with AWS SigV4  </div>
+                    <div class="option" data-answer="B">B. Schedule an AWS Lambda function to call AdminGetUser for every profile, write CSV to S3, and sign the file with the Lambda function’s IAM role certificate  </div>
+                    <div class="option" data-answer="C">C. Configure Cognito EventBridge events that trigger a Step Functions workflow to push each record to the vendor’s REST endpoint over TLS  </div>
+                    <div class="option" data-answer="D">D. Export Cognito Sync datasets as JSON, compress with gzip, and email the file to the vendor via S/MIME  </div>
+                </div>
+                <div class="explanation" data-correct="A">
+                    <strong>Correct Answer: A</strong><br><br>
+                    Cognito Streams emits user-attribute deltas in real time; Firehose can invoke a Lambda to strip credentials, convert to columnar format, and land in an S3 bucket that the analytics vendor can read. SigV4 on the bucket provides non-repudiation and auditability. AdminGetUser is throttled and exposes credentials if mis-coded, EventBridge streams are not batched for “nightly,” and email is unscalable and insecure.
+                </div>
+            </div>
+
+            <div class="question" data-question="62">
+                <div class="question-number">Question 62</div>
+                <div class="question-text">Q10. A zero-trust vendor claims that “identity is the new perimeter.”  </div>
+                <div class="options">
+                    <div class="option" data-answer="A">A. SAML 2.0 holder-of-key with X.509 attribute certificates  </div>
+                    <div class="option" data-answer="B">B. OAuth 2.0 token exchange (RFC 8693) and JWT-based device security tokens  </div>
+                    <div class="option" data-answer="C">C. WS-Federation with RST/RSTR and wst:Claims  </div>
+                    <div class="option" data-answer="D">D. Kerberos armoured tickets with FAST channel binding  </div>
+                </div>
+                <div class="explanation" data-correct="B">
+                    <strong>Correct Answer: B</strong><br><br>
+                    RFC 8693 lets the endpoint-management system exchange a device token for an access token that contains both user and device claims. The ERP can validate the embedded JWT device security token to enforce the 24-hour freshness rule. SAML holder-of-key (A) is browser-centric and lacks standard device claims. WS-Federation (C) is legacy Windows-only. Kerberos (D) does not work over the Internet and has no standardised health-token slot.
+                </div>
+            </div>
+
+        </form>
+        
+        <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+        
+        <div class="results" id="results">
+            <h2>Quiz Complete!</h2>
+            <div class="score" id="score">0%</div>
+            <p id="result-text"></p>
+        </div>
+    </div>
+    
+    <script>
+        let timeLimit = 180; // 3 minutes per question default
+        let timeRemaining = timeLimit * 62;
+        let timerInterval;
+        
+        // Timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                document.getElementById('timer').textContent = 
+                    minutes.toString().padStart(2, '0') + ':' + 
+                    seconds.toString().padStart(2, '0');
+                
+                if (timeRemaining < 300) { // 5 minutes warning
+                    document.getElementById('timer').classList.add('warning');
+                }
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+        
+        // Option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.question');
+                question.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        // Submit quiz
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            let correct = 0;
+            let total = 0;
+            
+            document.querySelectorAll('.question').forEach(q => {
+                total++;
+                const selected = q.querySelector('.option.selected');
+                const correctAnswer = q.querySelector('.explanation').dataset.correct;
+                const explanation = q.querySelector('.explanation');
+                
+                explanation.classList.add('show');
+                
+                if (selected) {
+                    if (selected.dataset.answer === correctAnswer) {
+                        selected.classList.add('correct');
+                        correct++;
+                    } else {
+                        selected.classList.add('wrong');
+                        q.querySelector('.option[data-answer="' + correctAnswer + '"]').classList.add('correct');
+                    }
+                } else {
+                    q.querySelector('.option[data-answer="' + correctAnswer + '"]').classList.add('correct');
+                }
+            });
+            
+            const percentage = Math.round((correct / total) * 100);
+            document.getElementById('score').textContent = percentage + '%';
+            document.getElementById('result-text').textContent = 
+                'You got ' + correct + ' out of ' + total + ' correct';
+            document.getElementById('results').style.display = 'block';
+            document.querySelector('.btn').style.display = 'none';
+        }
+        
+        startTimer();
+    </script>
+</body>
+</html>

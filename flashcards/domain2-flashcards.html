@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain 2 Flashcards - Asset Security</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .header h1 { color: #00d4ff; font-size: 32px; margin-bottom: 10px; }
+        .header p { color: #888; }
+        .progress {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #00d4ff;
+        }
+        .flashcard-container {
+            max-width: 600px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+        .flashcard {
+            background: #16213e;
+            border-radius: 20px;
+            padding: 40px;
+            min-height: 300px;
+            cursor: pointer;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border: 2px solid #0f3460;
+            position: relative;
+        }
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+        .card-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .card-front-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .card-back-text {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        .hint {
+            position: absolute;
+            bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .btn {
+            background: #0f3460;
+            border: none;
+            color: #eee;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #1a4a7a; }
+        .btn-primary { background: #00d4ff; color: #1a1a2e; }
+        .btn-primary:hover { background: #33ddff; }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .flashcard { min-height: 250px; padding: 30px; }
+            .card-front-text { font-size: 22px; }
+            .card-back-text { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎴 Domain 2 Flashcards</h1>
+        <p>Asset Security (10% of exam)</p>
+    </div>
+    
+    <div class="progress">
+        Card <span id="current">1</span> of <span id="total">12</span>
+    </div>
+    
+    <div class="flashcard-container">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="flashcard-face flashcard-front">
+                <span class="card-label">FRONT</span>
+                <div class="card-front-text" id="front-text">Loading...</div>
+                <span class="hint">Click to flip</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+                <span class="card-label">BACK</span>
+                <div class="card-back-text" id="back-text">Loading...</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="btn" onclick="prevCard()">← Previous</button>
+        <button class="btn btn-primary" onclick="nextCard()">Next →</button>
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-btn" onclick="shuffleCards()">🔀 Shuffle</button>
+        <button class="nav-btn" onclick="resetCards()">↺ Reset</button>
+    </div>
+
+    <script>
+        const flashcards = [
+            { front: "Data Owner", back: "<strong>Classifies</strong> data<br>Determines <strong>value</strong><br><strong>Approves</strong> access<br><br>Business person, not IT" },
+            { front: "Data Custodian", back: "<strong>Implements</strong> controls<br>Manages <strong>storage</strong><br><br>IT person, technical role" },
+            { front: "Data User", back: "<strong>Follows</strong> rules<br>Uses data <strong>appropriately</strong><br><br>Employee with access" },
+            { front: "Data at Rest", back: "In <strong>storage</strong><br><br>Disk, database, backup, tape<br><br>Control: <strong>Encryption</strong>" },
+            { front: "Data in Transit", back: "On <strong>network</strong><br><br>LAN, internet, WiFi<br><br>Controls: <strong>TLS, VPN, HTTPS</strong>" },
+            { front: "Data in Use", back: "In <strong>memory/CPU</strong><br>Active processing<br><br>Controls: <strong>Secure enclaves, memory encryption</strong>" },
+            { front: "Public Classification", back: "<strong>No harm</strong> if disclosed<br><br>Example: Marketing website, press releases" },
+            { front: "Internal Classification", back: "<strong>Business use only</strong><br><br>Example: Phone directory, org charts" },
+            { front: "Confidential Classification", back: "<strong>Significant harm</strong> if disclosed<br><br>Example: Customer data, financials" },
+            { front: "Secret/Restricted", back: "<strong>Severe harm</strong> if disclosed<br><br>Example: Trade secrets, M&A plans" },
+            { front: "HDD Disposal", back: "<strong>Degaussing</strong> ✅<br><br>Magnetic storage<br>Strong magnetic field erases data" },
+            { front: "SSD Disposal", back: "<strong>Physical destruction</strong> ✅<br><br>NOT degaussing (flash memory)<br>Shred, crush, or incinerate" }
+        ];
+        
+        let currentIndex = 0;
+        let shuffled = [...flashcards];
+        
+        function updateCard() {
+            document.getElementById('front-text').innerHTML = shuffled[currentIndex].front;
+            document.getElementById('back-text').innerHTML = shuffled[currentIndex].back;
+            document.getElementById('current').textContent = currentIndex + 1;
+            document.getElementById('total').textContent = shuffled.length;
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
+        
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+        
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % shuffled.length;
+            updateCard();
+        }
+        
+        function prevCard() {
+            currentIndex = (currentIndex - 1 + shuffled.length) % shuffled.length;
+            updateCard();
+        }
+        
+        function shuffleCards() {
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            currentIndex = 0;
+            updateCard();
+        }
+        
+        function resetCards() {
+            shuffled = [...flashcards];
+            currentIndex = 0;
+            updateCard();
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ') flipCard();
+            if (e.key === 'ArrowRight') nextCard();
+            if (e.key === 'ArrowLeft') prevCard();
+        });
+        
+        updateCard();
+    </script>
+</body>
+</html>

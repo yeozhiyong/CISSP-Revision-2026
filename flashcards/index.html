@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CISSP Flashcards</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .header h1 {
+            font-size: 42px;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+        .header p { color: #888; font-size: 18px; }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .stat-label {
+            color: #888;
+            font-size: 14px;
+        }
+        .domains {
+            display: grid;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .domain-card {
+            background: #16213e;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .domain-card:hover {
+            border-color: #00d4ff;
+            transform: translateX(10px);
+        }
+        .domain-info h2 {
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+        .domain-info p {
+            color: #888;
+        }
+        .domain-meta {
+            display: flex;
+            gap: 15px;
+        }
+        .badge {
+            background: #0f3460;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .btn-launch {
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        .instructions {
+            background: #0f3460;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .instructions h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        .instructions ul {
+            margin-left: 20px;
+            color: #aaa;
+        }
+        .instructions li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎴 CISSP Flashcards</h1>
+            <p>Interactive Study Cards for Quick Review</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">28</div>
+                <div class="stat-label">Total Cards</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Domains</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">🔀</div>
+                <div class="stat-label">Shuffle</div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>📱 How to Use</h3>
+            <ul>
+                <li><strong>Click card</strong> or press <strong>Space</strong> to flip</li>
+                <li>Use <strong>Arrow keys</strong> to navigate</li>
+                <li><strong>Shuffle</strong> button for random order</li>
+                <li>Study on mobile or desktop</li>
+            </ul>
+        </div>
+        
+        <div class="domains">
+            <a href="domain1-flashcards.html" class="domain-card">
+                <div class="domain-info">
+                    <h2>Domain 1</h2>
+                    <p>Security and Risk Management</p>
+                </div>
+                <div class="domain-meta">
+                    <span class="badge">16 cards</span>
+                    <span class="badge">16% weight</span>
+                    <span class="btn-launch">Launch →</span>
+                </div>
+            </a>
+            
+            <a href="domain2-flashcards.html" class="domain-card">
+                <div class="domain-info">
+                    <h2>Domain 2</h2>
+                    <p>Asset Security</p>
+                </div>
+                <div class="domain-meta">
+                    <span class="badge">12 cards</span>
+                    <span class="badge">10% weight</span>
+                    <span class="btn-launch">Launch →</span>
+                </div>
+            </a>
+        </div>
+        
+        <a href="../" class="back-link">← Back to Study Hub</a>
+    </div>
+</body>
+</html>

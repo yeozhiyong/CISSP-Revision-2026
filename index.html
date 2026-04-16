@@ -3,430 +3,398 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CISSP Revision 2026 - Domains 1 & 2</title>
+    <title>CISSP Revision 2026 - Study Hub</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
             line-height: 1.6;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        header {
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            padding: 60px 20px;
             text-align: center;
-            color: white;
+            border-bottom: 3px solid #00d4ff;
+        }
+        .header h1 {
+            font-size: 48px;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        .header p {
+            font-size: 20px;
+            color: #888;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 40px 20px;
         }
-        
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .section {
+            background: #16213e;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid #0f3460;
         }
-        
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        .domain-nav {
+        .section h2 {
+            color: #00d4ff;
+            font-size: 32px;
+            margin-bottom: 20px;
             display: flex;
+            align-items: center;
             gap: 15px;
-            justify-content: center;
+        }
+        .section h2 .icon {
+            font-size: 36px;
+        }
+        .section-description {
+            color: #888;
             margin-bottom: 30px;
-            flex-wrap: wrap;
+            font-size: 18px;
         }
-        
-        .domain-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border: 2px solid rgba(255,255,255,0.3);
-            transition: all 0.3s;
-            cursor: pointer;
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
-        
-        .domain-btn:hover, .domain-btn.active {
-            background: white;
-            color: #667eea;
-        }
-        
-        .domain-card {
-            background: white;
-            border-radius: 16px;
+        .card {
+            background: #0f3460;
+            border-radius: 15px;
             padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            display: none;
-        }
-        
-        .domain-card.active {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
             display: block;
         }
-        
-        .domain-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #667eea;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
         }
-        
-        .domain-title {
-            font-size: 1.8em;
-            color: #333;
-        }
-        
-        .domain-stats {
-            text-align: right;
-        }
-        
-        .weightage {
-            font-size: 2em;
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
-        
-        .status-complete {
-            background: #d4edda;
-            color: #155724;
-        }
-        
-        .status-progress {
-            background: #fff3cd;
-            color: #856404;
-        }
-        
-        .flashcard-section {
-            margin: 30px 0;
-        }
-        
-        .section-title {
-            font-size: 1.4em;
-            color: #667eea;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-title::before {
-            content: "🎴";
-        }
-        
-        .flashcard {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.2s;
-        }
-        
-        .flashcard:hover {
-            transform: translateX(5px);
-        }
-        
-        .flashcard-front {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.1em;
+        .card h3 {
+            color: #00d4ff;
+            font-size: 22px;
             margin-bottom: 10px;
         }
-        
-        .flashcard-back {
-            color: #555;
-            padding-left: 20px;
-            border-left: 2px solid #ddd;
-        }
-        
-        .checklist {
-            background: #f9f9f9;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        .checklist h3 {
-            color: #333;
+        .card p {
+            color: #aaa;
+            font-size: 16px;
             margin-bottom: 15px;
         }
-        
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            color: #555;
-        }
-        
-        .checklist-item.checked::before {
-            content: "✅";
-        }
-        
-        .checklist-item::before {
-            content: "☐";
-            font-size: 1.2em;
-            color: #667eea;
-        }
-        
-        .nav-links {
+        .card .meta {
             display: flex;
             gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
+            font-size: 14px;
+            color: #666;
         }
-        
-        .nav-link {
-            background: white;
-            color: #667eea;
-            padding: 12px 25px;
-            border-radius: 25px;
+        .card .meta span {
+            background: #16213e;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        .highlight-card {
+            background: linear-gradient(135deg, #0f3460 0%, #1a4a7a 100%);
+            border: 2px solid #00d4ff;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 15px 40px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 18px;
+            margin-top: 20px;
             transition: all 0.3s;
         }
-        
-        .nav-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        .btn-primary:hover {
+            background: #33ddff;
+            transform: scale(1.05);
         }
-        
-        footer {
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat {
+            background: #0f3460;
+            padding: 25px;
+            border-radius: 15px;
             text-align: center;
-            color: white;
-            padding: 30px;
-            opacity: 0.8;
         }
-        
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-            
-            .domain-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .domain-stats {
-                text-align: center;
-                margin-top: 15px;
-            }
-            
-            .domain-nav {
-                flex-direction: column;
-                align-items: center;
-            }
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .stat-label {
+            color: #888;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            border-top: 1px solid #0f3460;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 32px; }
+            .section { padding: 25px; }
+            .card-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎓 CISSP Revision 2026</h1>
-            <p>Exam Date: July 2026 | Domains 1 & 2 Complete</p>
-        </header>
-        
-        <div class="domain-nav">
-            <button class="domain-btn active" onclick="showDomain('domain1')">Domain 1</button>
-            <button class="domain-btn" onclick="showDomain('domain2')">Domain 2</button>
-        </div>
-        
-        <!-- Domain 1 -->
-        <div id="domain1" class="domain-card active">
-            <div class="domain-header">
-                <div>
-                    <h2 class="domain-title">Domain 1</h2>
-                    <p>Security and Risk Management</p>
-                </div>
-                <div class="domain-stats">
-                    <div class="weightage">16%</div>
-                    <span class="status-badge status-complete">✅ COMPLETE</span>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">CIA Triad</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Confidentiality</div>
-                    <div class="flashcard-back">Prevent unauthorized <strong>disclosure</strong> (encryption, access controls)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Integrity</div>
-                    <div class="flashcard-back">Prevent unauthorized <strong>modification</strong> (hashing, digital signatures)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Availability</div>
-                    <div class="flashcard-back">Ensure <strong>timely, reliable access</strong> (redundancy, backups, failover)</div>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Risk Formulas</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">SLE = ?</div>
-                    <div class="flashcard-back">Asset Value × EF (Single Loss Expectancy)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">ALE = ?</div>
-                    <div class="flashcard-back">SLE × ARO (Annual Loss Expectancy)</div>
-                </div>
-            </div>
-            
-            <div class="checklist">
-                <h3>✅ Mastery Checklist</h3>
-                <div class="checklist-item checked">CIA Triad memorized</div>
-                <div class="checklist-item checked">Risk formulas mastered</div>
-                <div class="checklist-item checked">Policy hierarchy understood</div>
-                <div class="checklist-item checked">Practice score: 10/10</div>
-            </div>
-        </div>
-        
-        <!-- Domain 2 -->
-        <div id="domain2" class="domain-card">
-            <div class="domain-header">
-                <div>
-                    <h2 class="domain-title">Domain 2</h2>
-                    <p>Asset Security</p>
-                </div>
-                <div class="domain-stats">
-                    <div class="weightage">10%</div>
-                    <span class="status-badge status-complete">✅ MASTERED</span>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Data Roles</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Data Owner</div>
-                    <div class="flashcard-back"><strong>Classifies</strong> data, determines <strong>value</strong>, <strong>approves</strong> access, <strong>business person</strong></div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Data Custodian</div>
-                    <div class="flashcard-back"><strong>Implements</strong> controls, manages <strong>storage</strong>, <strong>IT person</strong></div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Data User</div>
-                    <div class="flashcard-back"><strong>Follows</strong> rules, uses data <strong>appropriately</strong>, <strong>employee</strong></div>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Data States</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Data at Rest</div>
-                    <div class="flashcard-back">In <strong>storage</strong> (disk, database, backup) → Encrypt</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Data in Transit</div>
-                    <div class="flashcard-back">On <strong>network</strong> (LAN, internet) → TLS, VPN</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Data in Use</div>
-                    <div class="flashcard-back">In <strong>memory/CPU</strong> (active processing) → Secure enclaves</div>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Secure Disposal ⚠️</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">SSD Disposal</div>
-                    <div class="flashcard-back"><strong>Physical destruction</strong> ✅ | Degaussing ❌ (doesn't work on SSDs!)</div>
-                </div>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">HDD Disposal</div>
-                    <div class="flashcard-back"><strong>Degaussing</strong> ✅ | Physical destruction ✅</div>
-                </div>
-            </div>
-            
-            <div class="flashcard-section">
-                <h3 class="section-title">Classification Levels</h3>
-                
-                <div class="flashcard">
-                    <div class="flashcard-front">Public → Internal → Confidential → Secret</div>
-                    <div class="flashcard-back">Based on <strong>business impact</strong>, not technical difficulty</div>
-                </div>
-            </div>
-            
-            <div class="checklist">
-                <h3>✅ Mastery Checklist</h3>
-                <div class="checklist-item checked">Data Owner vs Custodian vs User</div>
-                <div class="checklist-item checked">Three states of data</div>
-                <div class="checklist-item checked">SSD disposal (physical destruction!)</div>
-                <div class="checklist-item checked">Classification levels</div>
-                <div class="checklist-item checked">Practice score: 10/10</div>
-            </div>
-        </div>
-        
-        <div class="nav-links">
-            <a href="https://github.com/yeozhiyong/research-reports/blob/main/cissp-complete-study-guide-2026.md" class="nav-link">📚 Full Study Guide</a>
-            <a href="https://github.com/yeozhiyong/CISSP-Revision-2026" class="nav-link">📁 GitHub Repo</a>
-        </div>
-        
-        <footer>
-            <p>CISSP Revision 2026 | Generated by Cupid AI Tutor</p>
-            <p>Domains 1 & 2 Complete | Ready for Domain 3</p>
-        </footer>
+    <div class="header">
+        <h1>🎓 CISSP Revision 2026</h1>
+        <p>Complete Study Hub for CISSP Certification</p>
     </div>
-    
-    <script>
-        function showDomain(domainId) {
-            // Hide all domains
-            document.querySelectorAll('.domain-card').forEach(card => {
-                card.classList.remove('active');
-            });
+
+    <div class="container">
+        <!-- AI Question Bank Section -->
+        <div class="section">
+            <h2><span class="icon">🤖</span> AI Question Bank</h2>
+            <p class="section-description">
+                500 AI-generated practice questions across all 8 CISSP domains. 
+                Generated by Kimi K2.5 Turbo with detailed explanations.
+            </p>
             
-            // Remove active class from all buttons
-            document.querySelectorAll('.domain-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">500</div>
+                    <div class="stat-label">Total Questions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Domains</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">AI</div>
+                    <div class="stat-label">Generated</div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <a href="question-bank-ai/domain1-security-and-risk-management.md" class="card">
+                    <h3>Domain 1</h3>
+                    <p>Security and Risk Management</p>
+                    <div class="meta">
+                        <span>62 questions</span>
+                        <span>15%</span>
+                    </div>
+                </a>
+                <a href="question-bank-ai/domain2-asset-security.md" class="card">
+                    <h3>Domain 2</h3>
+                    <p>Asset Security</p>
+                    <div class="meta">
+                        <span>65 questions</span>
+                        <span>15%</span>
+                    </div>
+                </a>
+                <a href="question-bank-ai/domain3-security-architecture.md" class="card">
+                    <h3>Domain 3</h3>
+                    <p>Security Architecture and Engineering</p>
+                    <div class="meta">
+                        <span>65 questions</span>
+                        <span>13%</span>
+                    </div>
+                </a>
+                <a href="question-bank-ai/domain4-communication-network-security.md" class="card">
+                    <h3>Domain 4</h3>
+                    <p>Communication and Network Security</p>
+                    <div class="meta">
+                        <span>63 questions</span>
+                        <span>13%</span>
+                    </div>
+                </a>
+                <a href="question-bank-ai/domain5-identity-access-management.md" class="card">
+                    <h3>Domain 5</h3>
+                    <p>Identity and Access Management</p>
+                    <div class="meta">
+                        <span>62 questions</span>
+                        <span>13%</span>
+                    </div>
+                </a>
+                <a href="question-bank-ai/domain6-security-assessment-testing.md" class="card">
+                    <h3>Domain 6</h3>
+                    <p>Security Assessment and Testing</p>
+                    <div class="meta">
+                        <span>63 questions</span>
+                        <span>12%</span>
+                    </div>
+                </a>
+                <a href="question-bank-ai/domain7-security-operations.md" class="card">
+                    <h3>Domain 7</h3>
+                    <p>Security Operations</p>
+                    <div class="meta">
+                        <span>62 questions</span>
+                        <span>13%</span>
+                    </div>
+                </a>
+                <a href="question-bank-ai/domain8-software-development-security.md" class="card">
+                    <h3>Domain 8</h3>
+                    <p>Software Development Security</p>
+                    <div class="meta">
+                        <span>58 questions</span>
+                        <span>6%</span>
+                    </div>
+                </a>
+            </div>
             
-            // Show selected domain
-            document.getElementById(domainId).classList.add('active');
+            <div style="text-align: center;">
+                <a href="question-bank-ai/README.md" class="btn-primary">📖 View Question Bank README</a>
+            </div>
+        </div>
+
+        <!-- Practice Tests Section -->
+        <div class="section">
+            <h2><span class="icon">🎯</span> Interactive Practice Tests</h2>
+            <p class="section-description">
+                Randomized, timed practice quizzes with instant feedback. 
+                Simulate the real exam experience with countdown timers and detailed explanations.
+            </p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Practice Quizzes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">⏱️</div>
+                    <div class="stat-label">Timed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">📱</div>
+                    <div class="stat-label">Mobile Ready</div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <a href="practice-tests/full-exam-simulation.html" class="card highlight-card">
+                    <h3>🏆 Full Exam Simulation</h3>
+                    <p>Complete 125-question exam with 3-hour timer</p>
+                    <div class="meta">
+                        <span>125 questions</span>
+                        <span>3 hours</span>
+                        <span>All domains</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain1-security-and-risk-management.html" class="card">
+                    <h3>Domain 1 Quiz</h3>
+                    <p>Security and Risk Management</p>
+                    <div class="meta">
+                        <span>60 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain2-asset-security.html" class="card">
+                    <h3>Domain 2 Quiz</h3>
+                    <p>Asset Security</p>
+                    <div class="meta">
+                        <span>65 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain3-security-architecture.html" class="card">
+                    <h3>Domain 3 Quiz</h3>
+                    <p>Security Architecture and Engineering</p>
+                    <div class="meta">
+                        <span>65 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain4-communication-network-security.html" class="card">
+                    <h3>Domain 4 Quiz</h3>
+                    <p>Communication and Network Security</p>
+                    <div class="meta">
+                        <span>63 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain5-identity-access-management.html" class="card">
+                    <h3>Domain 5 Quiz</h3>
+                    <p>Identity and Access Management</p>
+                    <div class="meta">
+                        <span>62 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain6-security-assessment-testing.html" class="card">
+                    <h3>Domain 6 Quiz</h3>
+                    <p>Security Assessment and Testing</p>
+                    <div class="meta">
+                        <span>60 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain7-security-operations.html" class="card">
+                    <h3>Domain 7 Quiz</h3>
+                    <p>Security Operations</p>
+                    <div class="meta">
+                        <span>61 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+                <a href="practice-tests/quiz-domain8-software-development-security.html" class="card">
+                    <h3>Domain 8 Quiz</h3>
+                    <p>Software Development Security</p>
+                    <div class="meta">
+                        <span>58 questions</span>
+                        <span>Randomized</span>
+                    </div>
+                </a>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="practice-tests/index.html" class="btn-primary">🎯 Launch Practice Tests</a>
+            </div>
+        </div>
+
+        <!-- Study Resources Section -->
+        <div class="section">
+            <h2><span class="icon">📚</span> Study Resources</h2>
+            <p class="section-description">
+                Additional study materials and reference guides for CISSP preparation.
+            </p>
             
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
-    </script>
+            <div class="card-grid">
+                <a href="flashcards/" class="card">
+                    <h3>🗂️ Flashcards</h3>
+                    <p>Quick review flashcards for key concepts</p>
+                    <div class="meta">
+                        <span>All domains</span>
+                    </div>
+                </a>
+                <a href="mindmaps/" class="card">
+                    <h3>🧠 Mind Maps</h3>
+                    <p>Visual concept maps for domain relationships</p>
+                    <div class="meta">
+                        <span>Visual learning</span>
+                    </div>
+                </a>
+                <a href="notes/" class="card">
+                    <h3>📝 Study Notes</h3>
+                    <p>Condensed notes and summaries</p>
+                    <div class="meta">
+                        <span>Quick reference</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🤖 Generated by Cupid AI for Zhi Yong</p>
+        <p>CISSP Revision 2026 | April 2026</p>
+    </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain 1 Flashcards - Security & Risk Management</title>
+    <title>Domain 4 Flashcards - Communication & Network Security</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -57,10 +57,10 @@
 </head>
 <body>
     <div class="header">
-        <h1>🎴 Domain 1 Flashcards</h1>
-        <p>Security and Risk Management (16% of exam)</p>
+        <h1>🎴 Domain 4 Flashcards</h1>
+        <p>Communication and Network Security (13% of exam)</p>
     </div>
-    <div class="progress">Card <span id="current">1</span> of <span id="total">20</span></div>
+    <div class="progress">Card <span id="current">1</span> of <span id="total">15</span></div>
     <div class="flashcard-container">
         <div class="flashcard" id="flashcard" onclick="flipCard()">
             <div class="flashcard-face flashcard-front">
@@ -86,26 +86,21 @@
 
     <script>
         const flashcards = [
-            { front: "Confidentiality", back: "Prevent unauthorized <strong>disclosure</strong><br><br>Controls: Encryption, access controls, authentication" },
-            { front: "Integrity", back: "Prevent unauthorized <strong>modification</strong><br><br>Controls: Hashing, digital signatures, version control" },
-            { front: "Availability", back: "Ensure <strong>timely, reliable access</strong><br><br>Controls: Redundancy, backups, failover, RAID" },
-            { front: "Policy", back: "<strong>High-level</strong>, strategic<br>Approved by senior management<br><br>Example: 'We protect customer data'" },
-            { front: "Standard", back: "<strong>Specific, mandatory</strong> requirements<br><br>Example: 'Passwords must be 12+ characters'" },
-            { front: "Procedure", back: "<strong>Step-by-step</strong> instructions<br><br>Example: 'How to reset a password'" },
-            { front: "Guideline", back: "<strong>Optional</strong> recommendations<br>Best practices<br><br>Not mandatory" },
-            { front: "Risk Formula", back: "<strong>Risk = Threat × Vulnerability × Impact</strong><br><br>Or: Risk = Likelihood × Impact" },
-            { front: "SLE", back: "<strong>Single Loss Expectancy</strong><br><br>SLE = Asset Value × EF (Exposure Factor)" },
-            { front: "ALE", back: "<strong>Annual Loss Expectancy</strong><br><br>ALE = SLE × ARO<br><br>Expected loss per year" },
-            { front: "ARO", back: "<strong>Annualized Rate of Occurrence</strong><br><br>How many times per year the event is expected to occur" },
-            { front: "Risk Avoidance", back: "<strong>Eliminate</strong> the risk<br><br>Stop the activity that creates the risk" },
-            { front: "Risk Mitigation", back: "<strong>Reduce</strong> likelihood/impact<br><br>Implement controls, training, monitoring" },
-            { front: "Risk Transfer", back: "<strong>Shift</strong> financial impact<br><br>Insurance, outsourcing, contracts" },
-            { front: "Risk Acceptance", back: "<strong>Do nothing</strong>, absorb cost<br><br>When mitigation cost > risk cost" },
-            { front: "Due Care vs Due Diligence", back: "<strong>Due Care:</strong> Taking reasonable steps (action)<br><br><strong>Due Diligence:</strong> Continuous monitoring (ongoing)" },
-            { front: "Residual Risk", back: "Risk <strong>remaining after</strong> controls implemented<br><br>Must be within risk appetite" },
-            { front: "Total Risk", back: "Risk <strong>before any</strong> controls<br><br>Inherent + Residual risk" },
-            { front: "Risk Appetite", back: "Amount of risk organization is <strong>willing to accept</strong><br><br>Determined by senior management" },
-            { front: "Business Impact Analysis (BIA)", back: "Identifies <strong>critical business functions</strong> and their dependencies<br><br>Used for disaster recovery planning" }
+            { front: "OSI Model - Layer 1", back: "<strong>Physical Layer</strong><br><br>Cables, connectors, electrical signals<br>Hubs, repeaters<br><br>Bits transmission" },
+            { front: "OSI Model - Layer 2", back: "<strong>Data Link Layer</strong><br><br>MAC addresses, frames<br>Switches, bridges<br><br>Error detection (CRC)" },
+            { front: "OSI Model - Layer 3", back: "<strong>Network Layer</strong><br><br>IP addresses, packets<br>Routers<br><br>Routing, logical addressing" },
+            { front: "OSI Model - Layer 4", back: "<strong>Transport Layer</strong><br><br>TCP, UDP<br>Port numbers<br><br>Reliable delivery, flow control" },
+            { front: "OSI Model - Layer 7", back: "<strong>Application Layer</strong><br><br>HTTP, FTP, SMTP<br>User interfaces<br><br>End-user services" },
+            { front: "TCP vs UDP", back: "<strong>TCP:</strong> Connection-oriented, reliable, ordered<br>HTTP, FTP, SSH<br><br><strong>UDP:</strong> Connectionless, fast, unreliable<br>DNS, VoIP, streaming" },
+            { front: "Firewall Types", back: "<strong>Packet Filter:</strong> Layer 3/4, fast, basic<br><strong>Stateful:</strong> Tracks connections<br><strong>Proxy:</strong> Layer 7, application-aware<br><strong>NGFW:</strong> Deep packet inspection" },
+            { front: "VPN Types", back: "<strong>Site-to-Site:</strong> Connects networks<br><strong>Remote Access:</strong> Individual users<br><br>Protocols: IPsec, SSL/TLS, L2TP" },
+            { front: "IPsec Modes", back: "<strong>Transport Mode:</strong> Encrypts payload only<br><strong>Tunnel Mode:</strong> Encrypts entire packet<br><br>AH (authentication) + ESP (encryption)" },
+            { front: "SSL/TLS", back: "<strong>Secure Sockets Layer / Transport Layer Security</strong><br><br>Encrypts web traffic (HTTPS)<br>Port 443<br>Certificates for authentication" },
+            { front: "DNS", back: "<strong>Domain Name System</strong><br><br>Translates domain names to IP addresses<br>Port 53<br>Critical infrastructure target" },
+            { front: "Subnetting", back: "<strong>Dividing network into smaller networks</strong><br><br>Improves security and performance<br>Reduces broadcast domain<br>CIDR notation (/24, /16)" },
+            { front: "VLAN", back: "<strong>Virtual LAN</strong><br><br>Logical network segmentation<br>Same switch, different networks<br>Improves security and organization" },
+            { front: "NAT", back: "<strong>Network Address Translation</strong><br><br>Private IP ↔ Public IP<br>Hides internal network structure<br>Conserves IPv4 addresses" },
+            { front: "Common Network Attacks", back: "<strong>MITM:</strong> Intercept communication<br><strong>DoS/DDoS:</strong> Deny service<br><strong>Spoofing:</strong> Fake identity<br><strong>Sniffing:</strong> Capture traffic" }
         ];
         let currentIndex = 0;
         let shuffled = [...flashcards];
